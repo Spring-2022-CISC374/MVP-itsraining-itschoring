@@ -1,9 +1,10 @@
 
 var config = {
-    width: 3000,
-    height: 1000,
+    width: 800,
+    height: 800,
+    type: Phaser.AUTO,
     backgroundColor: "0x000000",
-    scene:[Scene1,Scene2],
+    scene:[Scene0,Scene1,Scene2],
     pixelArt:true,
     physics: {
         default: 'arcade',
