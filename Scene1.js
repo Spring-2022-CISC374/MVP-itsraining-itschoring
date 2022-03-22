@@ -1,19 +1,19 @@
-class Scene1 extends Phaser.Scene{
-    constructor(){
-        super("bootGame"); // super ()inherit all the characteristit from phaser
+class Scene1 extends Phaser.Scene {
+    constructor() {
+        super('Scene1')
     }
 
-    preload(){
-        this.load.image("background","pics/bg.png");
-      
-        
-    }
-    create(){
-        this.add.text(30,30,"Loading game...");
-        this.scene.start("playGame");
-        
+    create() {
+        var centerX = this.physics.world.bounds.centerX
 
-
-        
+        for (var i = 1; i <= 4; i++) {
+            this.add.text(centerX - 75, 150*i, 'level ' + i, {
+                font: 'bold 32px Arial',
+                color: '#fff'
+            }).setInteractive().on('pointerdown', function (pointer) {
+                // level => Jump to the next scene
+                this.scene.start('Scene2')
+            }, this)
+        }
     }
 }
