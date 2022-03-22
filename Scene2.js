@@ -8,13 +8,7 @@ class Scene2 extends Phaser.Scene{
        // this.background=this.add.tileSprite(0,0,config.width,config.height,"background");//backgound dynamic 
         this.background.setOrigin(0,0);
 
-        //this.ship1=this.add.image(config.width/2-50,config.height/2,"ship");
-        //this.ship2=this.add.image(config.width/2,config.height/2,"ship2");
-        //this.ship3=this.add.image(config.width/2+50,config.height/2,"ship3");
-       // 
-       // this.ship1.setScale(3); //size
-       // //this.ship1.flipY=true;
-        //this.ship1.angle+=3; //roate
+     
 
       
         
