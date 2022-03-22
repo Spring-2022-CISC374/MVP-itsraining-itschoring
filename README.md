@@ -1,7 +1,7 @@
 Minimum Viable Product - It's Raining, It's Choring
 
 TItle Screen/Menus -  
-Background - 
+Background - Xinyi Sun: Do the background work and link to the Ruoxi page 
 Character Movement - 
 
 
