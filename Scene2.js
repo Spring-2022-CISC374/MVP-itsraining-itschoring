@@ -12,6 +12,7 @@ class Scene2 extends Phaser.Scene{
       this.load.image("background","assets/room4.png");
       this.load.image("arrow", "assets/arrow.png");
       this.load.image("player", "assets/chracter1.png");
+      this.load.image("foodbowl", "assets/foodbowl.png");
       this.load.image("counter", "assets/counter.png");
       this.load.image("sinkFridge", "assets/sinkFridge.png");
       this.load.image("leftWall", "assets/leftWall.png");
@@ -55,16 +56,20 @@ class Scene2 extends Phaser.Scene{
       this.player.setScale(0.1);
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
-      var arrow = this.add.image(0, 0, "arrow");
-      arrow.setPosition(650, 90);
-      arrow.setInteractive().on('pointerdown', function (pointer) {
-          console.log(this.player.body.position.x)
-          console.log(this.player.body.position.y)
-          if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
+      var dishArrow = this.add.image(0, 0, "arrow");
+      dishArrow.setPosition(650, 90);
+      dishArrow.setInteractive().on('pointerdown', function (pointer) {
+      if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
             // Go to dishwashing minigame
-
             this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
-          }
+      }, this);
+      var foodbowl = this.add.image(0, 0, "foodbowl");
+      foodbowl.setPosition(30, 165);
+      foodbowl.setScale(1.75);
+      var foodArrow = this.add.image(0, 0, "arrow");
+      foodArrow.setPosition(30, 135);
+      foodArrow.setInteractive().on('pointerdown', function (pointer) {
+          this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
       }, this);
 
       //add exit to room page - back to level page and exit

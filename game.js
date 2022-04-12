@@ -6,8 +6,8 @@ var config = {
     width: 800,
     height: 800,
     type: Phaser.AUTO,
-    backgroundColor: "0x000000",
-    scene:[Scene0,Scene1,Scene2,Scene3],
+    backgroundColor: "0x333333",
+    scene:[Scene0,Scene1,Scene2,Scene3,Scene4],
     pixelArt:true,
     physics: {
         default: 'arcade',
