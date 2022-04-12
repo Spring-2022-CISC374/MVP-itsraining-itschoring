@@ -12,7 +12,7 @@ class Scene1 extends Phaser.Scene {
                 color: '#fff'
             }).setInteractive().on('pointerdown', function (pointer) {
                 // level => Jump to the next scene
-                this.scene.start('Scene2')
+                this.scene.start('Scene2', {'posX': 300, 'posY': 500});
             }, this);
         }
     }

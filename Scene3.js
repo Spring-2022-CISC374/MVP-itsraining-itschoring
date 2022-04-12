@@ -5,6 +5,11 @@ class Scene3 extends Phaser.Scene{
         super("dishWashing");
     }
 
+    init(data){
+        this.lastPosX = data.posX;
+        this.lastPosY = data.posY;
+    }
+
     preload(){
         this.load.image("plate","assets/plate.png");
         this.load.image("stain1","assets/stain1.png");
@@ -29,13 +34,21 @@ class Scene3 extends Phaser.Scene{
         stain2.setInteractive();
         stain3.setInteractive();
         this.input.on('gameobjectdown', this.destroyStain, this);
+        this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
 
     destroyStain(pointer, gameObject) {
         gameObject.destroy();
         stainCount--;
         if (stainCount <= 0) {
-            this.scene.start("Scene2");
+            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+
+
+    update(){
+        // Switches back to Scene2 passing back the x and y position of the player.
+        if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
+            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+
         }
     }
 }

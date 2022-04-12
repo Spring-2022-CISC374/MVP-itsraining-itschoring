@@ -1,3 +1,6 @@
+var gameSettings = {
+    playerSpeed: 200,
+}
 
 var config = {
     width: 800,
@@ -12,8 +15,8 @@ var config = {
             // gravity: {
             //     y: 200
             // },
-        debug: true
-        }
+                debug: false
+            }
     }
 
 }
