@@ -27,6 +27,27 @@ class Scene2 extends Phaser.Scene{
             // Go to dishwashing minigame
             this.scene.start("dishWashing", {'posX': this.player.body.position.x + 8, 'posY': this.player.body.position.y + 12});
         }, this);
+
+        //add exit to room page - back to level page and exit
+        var text_style = {
+          font: 'bold 32px Arial',
+          color: '#fff'
+      }
+      var centerX = this.physics.world.bounds.centerX;
+      var text_exit = this.add.text(300, 700, 'Back to level', text_style);
+      text_exit.setInteractive();
+      text_exit.on('pointerdown', function (pointer) {
+          // start => move to the next screen
+          this.scene.start('Scene1')
+      }, this);
+
+      var centerX = this.physics.world.bounds.centerX;
+      var text_exit = this.add.text(600, 700, 'Exit', text_style);
+      text_exit.setInteractive();
+      text_exit.on('pointerdown', function (pointer) {
+          // start => move to the next screen
+          this.scene.start('Scene0')
+      }, this);
     }
 
     update(){
