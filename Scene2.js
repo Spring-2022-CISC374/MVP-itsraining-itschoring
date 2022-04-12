@@ -16,7 +16,7 @@ class Scene2 extends Phaser.Scene{
         arrow.setPosition(565, 215);
         arrow.setInteractive().on('pointerdown', function (pointer) {
             // Go to dishwashing minigame
-            this.scene.start('Scene3')
+            this.scene.start("dishWashing")
         }, this);
     }
 }
