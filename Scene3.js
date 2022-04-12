@@ -42,7 +42,8 @@ class Scene3 extends Phaser.Scene{
         stainCount--;
         if (stainCount <= 0) {
             this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
-
+        }
+    }
 
     update(){
         // Switches back to Scene2 passing back the x and y position of the player.

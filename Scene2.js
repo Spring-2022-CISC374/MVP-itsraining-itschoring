@@ -9,22 +9,20 @@ class Scene2 extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image("background","assets/bg.png");
+        this.load.image("background","assets/room4.png");
         this.load.image("arrow", "assets/arrow.png");
-        this.load.spritesheet("player", "assets/spritesheets/player.png",{
-            frameWidth: 16,
-            frameHeight: 24
-        });
+        this.load.image("player", "assets/chracter1.png");
         
     }
     create(){
         var background = this.add.image(0, 0, "background");
-        background.scale = 0.8;
+        background.scale = 1.65;
         background.setOrigin(0, 0);
         this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
+        this.player.setScale(0.1);
         this.cursorKeys = this.input.keyboard.createCursorKeys();
         var arrow = this.add.image(0, 0, "arrow");
-        arrow.setPosition(565, 215);
+        arrow.setPosition(650, 90);
         arrow.setInteractive().on('pointerdown', function (pointer) {
             // Go to dishwashing minigame
             this.scene.start("dishWashing", {'posX': this.player.body.position.x + 8, 'posY': this.player.body.position.y + 12});
