@@ -15,5 +15,18 @@ class Scene1 extends Phaser.Scene {
                 this.scene.start('Scene2', {'posX': 300, 'posY': 500});
             }, this);
         }
+        // adding exit to level page
+        var text_style = {
+            font: 'bold 32px Arial',
+            color: '#fff'
+        }
+        var centerX = this.physics.world.bounds.centerX;
+        var text_exit = this.add.text(600, 700, 'Exit', text_style);
+        text_exit.setInteractive();
+        text_exit.on('pointerdown', function (pointer) {
+            // start => move to the next screen
+            this.scene.start('Scene0')
+        }, this);
+
     }
 }
