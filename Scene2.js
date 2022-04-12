@@ -4,13 +4,8 @@ class Scene2 extends Phaser.Scene{
     }
 
     init(data){
-        console.log(data.posX);
         this.lastPosX = data.posX;
-        console.log(this.lastPosX)
-        
-        console.log(data.posY);
         this.lastPosY = data.posY;
-        console.log(this.lastPosY)
     }
 
     preload(){
