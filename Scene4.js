@@ -37,6 +37,8 @@ class Scene4 extends Phaser.Scene {
         })
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+        this.add.text(200, 325, "Click funnel to dispense food at the right time");
     }
 
     update() {
