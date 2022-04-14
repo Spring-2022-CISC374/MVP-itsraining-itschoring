@@ -55,7 +55,7 @@ class Scene2 extends Phaser.Scene{
       //load trash can 
       var trash = this.physics.add.image(0, 0, "trash");
       trash.setPosition(450, 340); // 400 310
-      trash.setScale(0.065);
+      trash.setScale(0.2);
       trash.setImmovable(true);
 
       // arrow icon for trash can 
