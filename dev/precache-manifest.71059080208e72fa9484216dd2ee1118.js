@@ -1,22 +1,22 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b13538c517ef7bb667635765808a01f4",
+    "revision": "db998027936b4d77f3c4c31b71c3c2d5",
     "url": "/MVP-itsraining-itschoring/devScene0.js"
   },
   {
-    "revision": "57a9b9f8a5d8543505afab36b8f30615",
+    "revision": "376a4ba497fb4a8c7a4bba971e79b22d",
     "url": "/MVP-itsraining-itschoring/devScene1.js"
   },
   {
-    "revision": "f8be89f3bf046c83b589d7ddc0add63b",
+    "revision": "ef143ee6606b48618347a1234e6f64b1",
     "url": "/MVP-itsraining-itschoring/devScene2.js"
   },
   {
-    "revision": "009610ab72360ee7cf7e1631fc1e28eb",
+    "revision": "e24a9fe60d4bd09e564d087e0020493a",
     "url": "/MVP-itsraining-itschoring/devScene3.js"
   },
   {
-    "revision": "bd6191baf6bb8d0cc78416f4ece5458a",
+    "revision": "3229552c633649098c5ab322ed66b8ba",
     "url": "/MVP-itsraining-itschoring/devScene4.js"
   },
   {
@@ -124,12 +124,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devfavicon.ico"
   },
   {
-    "revision": "a9e3ca6e7d48b3583df14c36d00a134c",
+    "revision": "7ec8cf133f466b0de06b2532f7d1a57a",
     "url": "/MVP-itsraining-itschoring/devgame.js"
   },
   {
-    "revision": "d21f6234167bbfe0c354",
-    "url": "/MVP-itsraining-itschoring/devgen.main.bd78e3b9e92510cee528.bundle.js"
+    "revision": "0ae90076bbd822865125",
+    "url": "/MVP-itsraining-itschoring/devgen.main.49a92d11308b9cec1028.bundle.js"
   },
   {
     "revision": "d0a8f35c4d87db96aedd19a4103a363e",

@@ -83,7 +83,7 @@ class Scene2 extends Phaser.Scene{
           color: '#fff'
       }
       var centerX = this.physics.world.bounds.centerX;
-      var text_exit = this.add.text(300, 700, 'Back to level', text_style);
+      var text_exit = this.add.text(300, 600, 'Back to level', text_style);
       text_exit.setInteractive();
       text_exit.on('pointerdown', function (pointer) {
           // start => move to the next screen
@@ -91,7 +91,7 @@ class Scene2 extends Phaser.Scene{
       }, this);
 
       var centerX = this.physics.world.bounds.centerX;
-      var text_exit = this.add.text(600, 700, 'Exit', text_style);
+      var text_exit = this.add.text(600, 600, 'Exit', text_style);
       text_exit.setInteractive();
       text_exit.on('pointerdown', function (pointer) {
           // start => move to the next screen
@@ -99,6 +99,8 @@ class Scene2 extends Phaser.Scene{
       }, this);
 
       this.physics.add.collider(this.walls, this.player);
+
+      this.add.text(30, 570, "Use Arrow Keys to move, click on orange arrow while nearby to start minigame");
   }
 
   update(){

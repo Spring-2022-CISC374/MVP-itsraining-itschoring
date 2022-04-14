@@ -35,6 +35,8 @@ class Scene3 extends Phaser.Scene{
         stain3.setInteractive();
         this.input.on('gameobjectdown', this.destroyStain, this);
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+        this.add.text(20, 670, "Click stains on plate to remove");
     }
 
     destroyStain(pointer, gameObject) {
