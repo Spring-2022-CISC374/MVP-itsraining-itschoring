@@ -7,7 +7,7 @@ class Scene1 extends Phaser.Scene {
         var centerX = this.physics.world.bounds.centerX;
 
         for (var i = 1; i <= 4; i++) {
-            this.add.text(centerX - 75, 150*i, 'level ' + i, {
+            this.add.text(centerX - 75, 125*i, 'level ' + i, {
                 font: 'bold 32px Arial',
                 color: '#fff'
             }).setInteractive().on('pointerdown', function (pointer) {
@@ -21,7 +21,7 @@ class Scene1 extends Phaser.Scene {
             color: '#fff'
         }
         var centerX = this.physics.world.bounds.centerX;
-        var text_exit = this.add.text(600, 700, 'Exit', text_style);
+        var text_exit = this.add.text(600, 600, 'Exit', text_style);
         text_exit.setInteractive();
         text_exit.on('pointerdown', function (pointer) {
             // start => move to the next screen

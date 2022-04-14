@@ -4,7 +4,7 @@ var gameSettings = {
 
 var config = {
     width: 800,
-    height: 800,
+    height: 700,
     type: Phaser.AUTO,
     backgroundColor: "0x333333",
     scene:[Scene0,Scene1,Scene2,Scene3,Scene4],
