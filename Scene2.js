@@ -67,7 +67,7 @@ class Scene2 extends Phaser.Scene{
           // Limit the character to a certain range of the trash can to click to trigger
           var x = this.player.body.position.x;
           var y = this.player.body.position.y;
-          if ((x > 400 && x < 500) && (y < 400 && y > 250)) {
+          if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
               this.scene.start("TrashGame", {
                   'posX': x + 27.8,
                   'posY': y + 44.45

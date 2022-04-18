@@ -21,7 +21,8 @@ class TrashGame extends Phaser.Scene {
     create() {
            
         
-        
+        this.add.text(200, 325, "Use Arrow Keys to move trash can");
+        this.add.text(100, 375, "Try to catch as much trash as possible before time runs out");
    
         // Score
         this.score = 0;
@@ -37,7 +38,7 @@ class TrashGame extends Phaser.Scene {
                 countDown.setText(--i);
                 if (i === 0) {
                     console.log(this.score)
-                    this.scene.start("Sgarbage", { 'posX': this.lastPosX, 'posY': this.lastPosY });
+                    this.scene.start("Scene2", { 'posX': this.lastPosX, 'posY': this.lastPosY });
                 }
             }
         })
@@ -74,7 +75,7 @@ class TrashGame extends Phaser.Scene {
                 })
             }
         })
-
+        this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
 
     update() {
@@ -84,6 +85,9 @@ class TrashGame extends Phaser.Scene {
             this.trash.setVelocityX(-gameSettings.playerSpeed * 2);
         } else if (this.cursorKeys.right.isDown) {
             this.trash.setVelocityX(gameSettings.playerSpeed * 2);
+        }
+        if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
+            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
         }
     }
 
