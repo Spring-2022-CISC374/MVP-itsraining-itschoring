@@ -75,15 +75,15 @@ class Scene2 extends Phaser.Scene{
           }
       }, this)
 
-      // 浇花箭头
+      // watering arrow
       var flowerArrow = this.physics.add.image(0, 0, "arrow");
       flowerArrow.setPosition(45, 330);
       flowerArrow.setImmovable(true);
       this.physics.add.collider(flowerArrow, this.player);
       
-      // 浇花小游戏
+      // flower mini game
       flowerArrow.setInteractive().on('pointerdown', function (pointer) {
-          // 限制人物一定范围内才能点击触发
+          // ppl moving area
           var x = this.player.body.position.x;
           var y = this.player.body.position.y;
         

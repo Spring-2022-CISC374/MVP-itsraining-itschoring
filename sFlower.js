@@ -24,9 +24,9 @@ class Sflower extends Phaser.Scene {
         // var centerX = this.physics.world.bounds.centerX;
         // var text_title1 = this.add.text(centerX - 100, 150, "Click on the kettle!!!", text_style);
         // //text
-        // 鲜花初成长
-        this.flower_time = 0;  // 鲜花成长时间
-        // 时间：从0每秒递增
+        // initial grow of flower
+        this.flower_time = 0;  // grow time
+        // time
         var timeText = this.add.text(30, 30, this.flower_time);
         this.timer = this.time.addEvent({
             delay: 1000,
@@ -36,21 +36,21 @@ class Sflower extends Phaser.Scene {
             }
         })
 
-        // 设置花（第一阶段）
+        // 1
         this.index = 1;
         this._flower = this.physics.add.image(0, 0, "flower1");
         this.setFlower(this._flower, this.index)
 
-        // 设置浇水器
+        // watering
         var watering = this.physics.add.image(0, 0, "watering");
         watering.setScale(0.1);
         watering.setPosition(400, 400);
         watering.setImmovable(true);
 
-        // 浇花
+        // watering
         watering.setInteractive().on('pointerdown', function (pointer) {
             var _index = 0;
-            // 判断当前倒计时
+            // timmer
             if (this.flower_time >= 3 && this.flower_time <= 5) {
                 _index = 2
             } else if (this.flower_time >= 6 && this.flower_time <= 8) {
