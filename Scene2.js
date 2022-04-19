@@ -75,6 +75,26 @@ class Scene2 extends Phaser.Scene{
           }
       }, this)
 
+      // 浇花箭头
+      var flowerArrow = this.physics.add.image(0, 0, "arrow");
+      flowerArrow.setPosition(45, 330);
+      flowerArrow.setImmovable(true);
+      this.physics.add.collider(flowerArrow, this.player);
+      
+      // 浇花小游戏
+      flowerArrow.setInteractive().on('pointerdown', function (pointer) {
+          // 限制人物一定范围内才能点击触发
+          var x = this.player.body.position.x;
+          var y = this.player.body.position.y;
+        
+          if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
+              this.scene.start("Sflower", {
+                  'posX': x + 27.8,
+                  'posY': y + 44.45
+              })
+          }
+      }, this)
+
       var foodbowl = this.add.image(0, 0, "foodbowl");
       foodbowl.setPosition(30, 165);
       foodbowl.setScale(1.75);
