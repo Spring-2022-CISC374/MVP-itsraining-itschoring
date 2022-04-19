@@ -13,6 +13,7 @@ class Scene2 extends Phaser.Scene{
       this.load.image("arrow", "assets/arrow.png");
       this.load.image("player", "assets/chracter1.png");
       this.load.image("foodbowl", "assets/foodbowl.png");
+      this.load.image("trash", "assets/trash-icon.jpg");
       this.load.image("counter", "assets/counter.png");
       this.load.image("sinkFridge", "assets/sinkFridge.png");
       this.load.image("leftWall", "assets/leftWall.png");
@@ -51,6 +52,48 @@ class Scene2 extends Phaser.Scene{
       right.setPosition(742, 200);
       bottom.setPosition(500, 565);
       table.setPosition(195, 312);
+      //load trash can 
+      var trash = this.physics.add.image(0, 0, "trash");
+      trash.setPosition(450, 340); // 400 310
+      trash.setScale(0.2);
+      trash.setImmovable(true);
+
+      // arrow icon for trash can 
+      var trashArrow = this.add.image(0, 0, "arrow");
+      trashArrow.setPosition(450, 300);
+      // Arrow click event => enter trash pickup mini-game scene
+
+      trashArrow.setInteractive().on('pointerdown', function (pointer) {
+          // Limit the character to a certain range of the trash can to click to trigger
+          var x = this.player.body.position.x;
+          var y = this.player.body.position.y;
+          if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
+              this.scene.start("TrashGame", {
+                  'posX': x + 27.8,
+                  'posY': y + 44.45
+              })
+          }
+      }, this)
+
+      // watering arrow
+      var flowerArrow = this.physics.add.image(0, 0, "arrow");
+      flowerArrow.setPosition(45, 330);
+      flowerArrow.setImmovable(true);
+      this.physics.add.collider(flowerArrow, this.player);
+      
+      // flower mini game
+      flowerArrow.setInteractive().on('pointerdown', function (pointer) {
+          // ppl moving area
+          var x = this.player.body.position.x;
+          var y = this.player.body.position.y;
+        
+          if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
+              this.scene.start("Sflower", {
+                  'posX': x + 27.8,
+                  'posY': y + 44.45
+              })
+          }
+      }, this)
 
       var foodbowl = this.add.image(0, 0, "foodbowl");
       foodbowl.setPosition(30, 165);
