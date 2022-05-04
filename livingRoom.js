@@ -34,12 +34,12 @@ class livingRoom extends Phaser.Scene{
       var right = this.physics.add.image(0, 0, "right");
       var bottom = this.physics.add.image(0, 0, "bottom");
       var table = this.physics.add.image(0, 0, "table");
-      this.walls.add(counter);
+      //this.walls.add(counter);
       this.walls.add(sinkFridge);
       this.walls.add(leftWall);
-      this.walls.add(right);
+      //this.walls.add(right);
       this.walls.add(bottom);
-      this.walls.add(table);
+      //this.walls.add(table);
       counter.setImmovable(true);
       sinkFridge.setImmovable(true);
       leftWall.setImmovable(true);
@@ -47,10 +47,10 @@ class livingRoom extends Phaser.Scene{
       bottom.setImmovable(true);
       table.setImmovable(true);
       counter.setPosition(678, 303);
-      sinkFridge.setPosition(640, 120);
+      sinkFridge.setPosition(450, 90);
       leftWall.setPosition(20, 65);
       right.setPosition(742, 200);
-      bottom.setPosition(500, 565);
+      bottom.setPosition(500, 520);
       table.setPosition(195, 312);
       //load trash can 
       var trash = this.physics.add.image(0, 0, "trash");
