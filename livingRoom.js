@@ -12,14 +12,14 @@ class livingRoom extends Phaser.Scene{
       this.load.image("background","assets/livingRoom.png");
       this.load.image("arrow", "assets/arrow.png");
       this.load.image("player", "assets/chracter1.png");
-      this.load.image("foodbowl", "assets/foodbowl.png");
-      this.load.image("trash", "assets/trash-icon.jpg");
       this.load.image("counter", "assets/counter.png");
       this.load.image("sinkFridge", "assets/sinkFridge.png");
       this.load.image("leftWall", "assets/leftWall.png");
       this.load.image("right", "assets/right.png");
       this.load.image("bottom", "assets/bottom.png");
       this.load.image("table", "assets/table.png");
+      this.load.image("couchBarrier", "assets/couchBarrier.png");
+      this.load.image("chairBarrier", "assets/chairBarrier.png");
       
   }
   create(){
@@ -34,11 +34,17 @@ class livingRoom extends Phaser.Scene{
       var right = this.physics.add.image(0, 0, "right");
       var bottom = this.physics.add.image(0, 0, "bottom");
       var table = this.physics.add.image(0, 0, "table");
+      var couchBarrier = this.physics.add.image(0, 0, "couchBarrier");
+      var chairBarrierR = this.physics.add.image(0, 0, "chairBarrier");
+      var chairBarrierL = this.physics.add.image(0, 0, "chairBarrier");
       //this.walls.add(counter);
       this.walls.add(sinkFridge);
       this.walls.add(leftWall);
       //this.walls.add(right);
       this.walls.add(bottom);
+      this.walls.add(couchBarrier);
+      this.walls.add(chairBarrierR);
+      this.walls.add(chairBarrierL);
       //this.walls.add(table);
       counter.setImmovable(true);
       sinkFridge.setImmovable(true);
@@ -46,38 +52,22 @@ class livingRoom extends Phaser.Scene{
       right.setImmovable(true);
       bottom.setImmovable(true);
       table.setImmovable(true);
+      couchBarrier.setImmovable(true);
+      chairBarrierR.setImmovable(true);
+      chairBarrierL.setImmovable(true);
       counter.setPosition(678, 303);
       sinkFridge.setPosition(450, 90);
       leftWall.setPosition(20, 65);
       right.setPosition(742, 200);
       bottom.setPosition(500, 520);
       table.setPosition(195, 312);
-      //load trash can 
-      var trash = this.physics.add.image(0, 0, "trash");
-      trash.setPosition(450, 340); // 400 310
-      trash.setScale(0.2);
-      trash.setImmovable(true);
-
-      // arrow icon for trash can 
-      var trashArrow = this.add.image(0, 0, "arrow");
-      trashArrow.setPosition(450, 300);
-      // Arrow click event => enter trash pickup mini-game scene
-
-      trashArrow.setInteractive().on('pointerdown', function (pointer) {
-          // Limit the character to a certain range of the trash can to click to trigger
-          var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
-          if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
-              this.scene.start("trashGame", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })
-          }
-      }, this)
+      couchBarrier.setPosition(390, 290);
+      chairBarrierL.setPosition(245, 220);
+      chairBarrierR.setPosition(535, 220);
 
       // watering arrow
       var flowerArrow = this.add.image(0, 0, "arrow");
-      flowerArrow.setPosition(45, 330);
+      flowerArrow.setPosition(42, 330);
       
       // flower mini game
       flowerArrow.setInteractive().on('pointerdown', function (pointer) {
@@ -86,35 +76,36 @@ class livingRoom extends Phaser.Scene{
           var y = this.player.body.position.y;
         
           if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
-              this.scene.start("Sflower", {
+              /*this.scene.start("Sflower", {
                   'posX': x + 27.8,
                   'posY': y + 44.45
-              })
+              })*/
+              console.log("start minigame")
           }
       }, this)
-
-      var foodbowl = this.add.image(0, 0, "foodbowl");
-      foodbowl.setPosition(30, 165);
-      foodbowl.setScale(1.75);
-      var foodArrow = this.add.image(0, 0, "arrow");
-      foodArrow.setPosition(30, 135);
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
       this.player.setScale(0.1);
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
-      var dishArrow = this.add.image(0, 0, "arrow");
-      dishArrow.setPosition(650, 90);
-      dishArrow.setInteractive().on('pointerdown', function (pointer) {
-      if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
-            // Go to dishwashing minigame
-            this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+
+      var bookArrow = this.add.image(0, 0, "arrow");
+      bookArrow.setPosition(622, 70);
+      bookArrow.setInteractive().on('pointerdown', function (pointer) {
+      if(this.player.body.position.x > 525 && this.player.body.position.y < 165 && this.player.body.position.x < 660){
+            //replace "dishWashing" with the name of the bookshelf minigame scene
+            console.log("start minigame")
+            //this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
         }
       }, this);
       
-      foodArrow.setInteractive().on('pointerdown', function (pointer) {
-        if(this.player.body.position.x < 60 && this.player.body.position.y < 175){
-          this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+      var carpetArrow = this.add.image(0, 0, "arrow");
+      carpetArrow.setPosition(390, 250);
+      carpetArrow.setInteractive().on('pointerdown', function (pointer) {
+        if(this.player.body.position.x > 270 && this.player.body.position.x < 450 && this.player.body.position.y < 230 && this.player.body.position.y > 150){
+            //replace "dogFeeding" with the name of the vacuum minigame scene
+            console.log("start minigame")
+            //this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
         }
       }, this);
 
