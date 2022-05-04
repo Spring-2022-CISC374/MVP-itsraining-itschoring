@@ -1,3 +1,5 @@
+var dirtCount = 3;
+
 class vacuuming extends Phaser.Scene {
     constructor() {
         super("vacuuming");
@@ -9,12 +11,7 @@ class vacuuming extends Phaser.Scene {
         this.completion = data.completion;
     }
 
-    preload() {
-        this.load.image("foodfunnel", "assets/foodfunnel.png")
-        this.load.image("foodbowl", "assets/foodbowl.png");
-        this.load.image("food", "assets/food.png");
-        this.load.image("empty", "assets/empty.png");
-    }
+    preload() {}
 
     create() {
         this.cursorKeys = this.input.keyboard.createCursorKeys();
