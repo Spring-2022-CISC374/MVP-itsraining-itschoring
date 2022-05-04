@@ -1,6 +1,6 @@
 var stainCount = 3;
 
-class Scene3 extends Phaser.Scene{
+class dishWashing extends Phaser.Scene{
     constructor(){
         super("dishWashing");
     }
@@ -43,14 +43,14 @@ class Scene3 extends Phaser.Scene{
         gameObject.destroy();
         stainCount--;
         if (stainCount <= 0) {
-            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY});
         }
     }
 
     update(){
-        // Switches back to Scene2 passing back the x and y position of the player.
+        // Switches back to kitchen level, passing back the x and y position of the player.
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
-            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY});
 
         }
     }

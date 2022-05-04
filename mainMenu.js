@@ -1,6 +1,6 @@
-class Scene0 extends Phaser.Scene {
+class mainMenu extends Phaser.Scene {
     constructor () {
-        super('Scene0');
+        super('mainMenu');
     }
 
     preload () {}
@@ -19,14 +19,14 @@ class Scene0 extends Phaser.Scene {
         text_start.setInteractive();
         text_start.on('pointerdown', function (pointer) {
             // start => move to the next screen
-            this.scene.start('Scene1')
+            this.scene.start('levelSelect')
         }, this);
 
         var text_exit = this.add.text(600, 600, 'Exit', text_style);
         text_exit.setInteractive();
         text_exit.on('pointerdown', function (pointer) {
             // exit game
-            this.scene.stop('Scene0')
+            this.scene.stop('mainMenu')
         });
     }
 }

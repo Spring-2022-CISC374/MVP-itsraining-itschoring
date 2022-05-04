@@ -1,6 +1,6 @@
-class Scene2 extends Phaser.Scene{
+class livingRoom extends Phaser.Scene{
   constructor(){
-      super("Scene2");
+      super("livingRoom");
   }
 
   init(data){
@@ -9,7 +9,7 @@ class Scene2 extends Phaser.Scene{
   }
 
   preload(){
-      this.load.image("background","assets/room4.png");
+      this.load.image("background","assets/livingRoom.png");
       this.load.image("arrow", "assets/arrow.png");
       this.load.image("player", "assets/chracter1.png");
       this.load.image("foodbowl", "assets/foodbowl.png");
@@ -24,7 +24,7 @@ class Scene2 extends Phaser.Scene{
   }
   create(){
       var background = this.add.image(0, 0, "background");
-      background.scale = 1.65;
+      background.scale = 1.52;
       background.setOrigin(0, 0);
 
       this.walls = this.physics.add.group();
@@ -68,7 +68,7 @@ class Scene2 extends Phaser.Scene{
           var x = this.player.body.position.x;
           var y = this.player.body.position.y;
           if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
-              this.scene.start("TrashGame", {
+              this.scene.start("trashGame", {
                   'posX': x + 27.8,
                   'posY': y + 44.45
               })
@@ -76,10 +76,8 @@ class Scene2 extends Phaser.Scene{
       }, this)
 
       // watering arrow
-      var flowerArrow = this.physics.add.image(0, 0, "arrow");
+      var flowerArrow = this.add.image(0, 0, "arrow");
       flowerArrow.setPosition(45, 330);
-      flowerArrow.setImmovable(true);
-      this.physics.add.collider(flowerArrow, this.player);
       
       // flower mini game
       flowerArrow.setInteractive().on('pointerdown', function (pointer) {
@@ -130,7 +128,7 @@ class Scene2 extends Phaser.Scene{
       text_exit.setInteractive();
       text_exit.on('pointerdown', function (pointer) {
           // start => move to the next screen
-          this.scene.start('Scene1')
+          this.scene.start('levelSelect')
       }, this);
 
       var centerX = this.physics.world.bounds.centerX;
@@ -138,7 +136,7 @@ class Scene2 extends Phaser.Scene{
       text_exit.setInteractive();
       text_exit.on('pointerdown', function (pointer) {
           // start => move to the next screen
-          this.scene.start('Scene0')
+          this.scene.start('mainMenu')
       }, this);
 
       this.physics.add.collider(this.walls, this.player);
