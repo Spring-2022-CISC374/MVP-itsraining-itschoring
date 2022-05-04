@@ -11,7 +11,10 @@ class livingRoom extends Phaser.Scene{
   preload(){
       this.load.image("background","assets/livingRoom.png");
       this.load.image("arrow", "assets/arrow.png");
-      this.load.image("player", "assets/chracter1.png");
+      this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
+          frameWidth: 128,
+          frameHeight: 128
+      });
       this.load.image("counter", "assets/counter.png");
       this.load.image("sinkFridge", "assets/sinkFridge.png");
       this.load.image("leftWall", "assets/leftWall.png");
