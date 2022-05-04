@@ -3,7 +3,42 @@ class mainMenu extends Phaser.Scene {
         super('mainMenu');
     }
 
-    preload () {}
+    preload () {
+      this.load.image("kitchenBG","assets/kitchen.png");
+      this.load.image("livingRoomBG","assets/livingRoom.png");
+      this.load.image("bedroom1BG","assets/bedroom1.jpg");
+      this.load.image("arrow", "assets/arrow.png");
+      this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkLeft", "assets/spritesheets/charWalkLeft.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkRight", "assets/spritesheets/charWalkRight.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkUp", "assets/spritesheets/charWalkUp.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkDown", "assets/spritesheets/charWalkDown.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.image("foodbowl", "assets/foodbowl.png");
+      this.load.image("trash", "assets/trash-icon.jpg");
+      this.load.image("counter", "assets/counter.png");
+      this.load.image("sinkFridge", "assets/sinkFridge.png");
+      this.load.image("leftWall", "assets/leftWall.png");
+      this.load.image("right", "assets/right.png");
+      this.load.image("bottom", "assets/bottom.png");
+      this.load.image("table", "assets/table.png");
+      this.load.image("couchBarrier", "assets/couchBarrier.png");
+      this.load.image("chairBarrier", "assets/chairBarrier.png");
+    }
 
     create () {
         var text_style = {

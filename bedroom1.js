@@ -8,22 +8,10 @@ class bedroom1 extends Phaser.Scene{
       this.lastPosY = data.posY;
   }
 
-  preload(){
-      this.load.image("background","assets/bedroom1.jpg");
-      this.load.image("arrow", "assets/arrow.png");
-      this.load.image("player", "assets/chracter1.png");
-      this.load.image("foodbowl", "assets/foodbowl.png");
-      this.load.image("trash", "assets/trash-icon.jpg");
-      this.load.image("counter", "assets/counter.png");
-      this.load.image("sinkFridge", "assets/sinkFridge.png");
-      this.load.image("leftWall", "assets/leftWall.png");
-      this.load.image("right", "assets/right.png");
-      this.load.image("bottom", "assets/bottom.png");
-      this.load.image("table", "assets/table.png");
-      
-  }
+  preload(){}
+
   create(){
-      var background = this.add.image(0, 0, "background");
+      var background = this.add.image(0, 0, "bedroom1BG");
       background.scale = 1.67;
       background.setOrigin(0, 0);
 
