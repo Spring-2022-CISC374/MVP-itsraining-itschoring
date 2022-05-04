@@ -1,6 +1,6 @@
 class TrashGame extends Phaser.Scene {
     constructor() {
-        super("TrashGame");
+        super("trashGame");
     }
 
     init(data) {
@@ -38,7 +38,7 @@ class TrashGame extends Phaser.Scene {
                 countDown.setText(--i);
                 if (i === 0) {
                     console.log(this.score)
-                    this.scene.start("Scene2", { 'posX': this.lastPosX, 'posY': this.lastPosY });
+                    this.scene.start("kitchen", { 'posX': this.lastPosX, 'posY': this.lastPosY });
                 }
             }
         })
@@ -87,7 +87,7 @@ class TrashGame extends Phaser.Scene {
             this.trash.setVelocityX(gameSettings.playerSpeed * 2);
         }
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
-            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY});
         }
     }
 
