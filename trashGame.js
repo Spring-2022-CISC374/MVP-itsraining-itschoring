@@ -9,15 +9,7 @@ class TrashGame extends Phaser.Scene {
         this.completion = data.completion;
     }
 
-    preload() {
-        this.load.image("garbage", "assets/garbage.png");
-        this.load.image("trash", "assets/trash-icon.jpg");
-
-        this.load.image("foodfunnel", "assets/foodfunnel.png")
-        this.load.image("foodbowl", "assets/foodbowl.png");
-        this.load.image("food", "assets/food.png");
-        this.load.image("empty", "assets/empty.png");
-    }
+    preload() {}
 
     create() {
            

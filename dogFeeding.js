@@ -9,12 +9,7 @@ class dogFeeding extends Phaser.Scene {
         this.completion = data.completion;
     }
 
-    preload() {
-        this.load.image("foodfunnel", "assets/foodfunnel.png")
-        this.load.image("foodbowl", "assets/foodbowl.png");
-        this.load.image("food", "assets/food.png");
-        this.load.image("empty", "assets/empty.png");
-    }
+    preload() {}
 
     create() {
         var foodFunnel = this.physics.add.image(0, 0, "foodfunnel");
@@ -34,7 +29,7 @@ class dogFeeding extends Phaser.Scene {
         foodFunnel.setInteractive().on('pointerdown', function (pointer) {
             foodVar.setPosition(foodFunnel.x, foodFunnel.y + 80);
             foodVar.setTexture("food");
-            foodVar.setVelocityY(150);
+            foodVar.setVelocityY(200);
         })
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
