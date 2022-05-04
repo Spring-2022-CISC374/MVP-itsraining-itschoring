@@ -24,31 +24,6 @@ class kitchen extends Phaser.Scene{
       background.scale = 1.67;
       background.setOrigin(0, 0);
 
-      this.anims.create({
-        key: "walkLeftAnim",
-        frames: this.anims.generateFrameNumbers("walkLeft"),
-        frameRate: 8,
-        repeat: -1
-      });
-      this.anims.create({
-        key: "walkRightAnim",
-        frames: this.anims.generateFrameNumbers("walkRight"),
-        frameRate: 8,
-        repeat: -1
-      });
-      this.anims.create({
-        key: "walkUpAnim",
-        frames: this.anims.generateFrameNumbers("walkUp"),
-        frameRate: 8,
-        repeat: -1
-      });
-      this.anims.create({
-        key: "walkDownAnim",
-        frames: this.anims.generateFrameNumbers("walkDown"),
-        frameRate: 8,
-        repeat: -1
-      });
-
       this.walls = this.physics.add.group();
       var counter = this.physics.add.image(0, 0, "counter");
       var sinkFridge = this.physics.add.image(0, 0, "sinkFridge");
@@ -183,7 +158,7 @@ class kitchen extends Phaser.Scene{
       this.movePlayerManager();
   }
 
-  movePlayerManager(){
+movePlayerManager(){
 
       this.player.setVelocity(0);
   

@@ -41,6 +41,31 @@ class mainMenu extends Phaser.Scene {
     }
 
     create () {
+        this.anims.create({
+            key: "walkLeftAnim",
+            frames: this.anims.generateFrameNumbers("walkLeft"),
+            frameRate: 8,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "walkRightAnim",
+            frames: this.anims.generateFrameNumbers("walkRight"),
+            frameRate: 8,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "walkUpAnim",
+            frames: this.anims.generateFrameNumbers("walkUp"),
+            frameRate: 8,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "walkDownAnim",
+            frames: this.anims.generateFrameNumbers("walkDown"),
+            frameRate: 8,
+            repeat: -1
+        });
+        
         var text_style = {
             font: 'bold 32px Arial',
             color: '#fff'
