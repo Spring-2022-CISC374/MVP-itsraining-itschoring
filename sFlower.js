@@ -6,6 +6,7 @@ class Sflower extends Phaser.Scene {
     init(data) {
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
+        this.completion = data.completion;
     }
 
     preload() {
@@ -73,6 +74,14 @@ class Sflower extends Phaser.Scene {
         var centerX = this.physics.world.bounds.centerX;
         var text_title1 = this.add.text(centerX - 100, 150, "Click on the kettle!!!", text_style);
         //text
+        this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    }
+
+    update(){
+        if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
+            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY,
+            'completion': [this.completion[0], this.completion[1], this.completion[2], 1]});
+        }
     }
     
 
@@ -85,7 +94,8 @@ class Sflower extends Phaser.Scene {
             this.time.addEvent({
                 delay: 1000,
                 callback: () => {
-                    this.scene.start("Scene2", { 'posX': this.lastPosX, 'posY': this.lastPosY });
+                    this.scene.start("kitchen", { 'posX': this.lastPosX, 'posY': this.lastPosY,
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], 1] });
                 }
             })
         }
