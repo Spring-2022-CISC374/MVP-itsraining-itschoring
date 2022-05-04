@@ -1,4 +1,4 @@
-class Scene4 extends Phaser.Scene {
+class dogFeeding extends Phaser.Scene {
     constructor() {
         super("dogFeeding");
     }
@@ -43,7 +43,7 @@ class Scene4 extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY});
         }
 
         this.exitGameManager();
@@ -52,7 +52,7 @@ class Scene4 extends Phaser.Scene {
     exitGameManager() {
         if (this.food.y === this.foodbowl.y) {
             if (this.food.x - this.foodbowl.x > -100 && this.food.x - this.foodbowl.x < 100) {
-                this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+                this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY});
             }
         }
     }

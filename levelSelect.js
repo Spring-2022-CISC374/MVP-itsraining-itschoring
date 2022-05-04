@@ -1,6 +1,6 @@
-class Scene1 extends Phaser.Scene {
+class levelSelect extends Phaser.Scene {
     constructor() {
-        super('Scene1')
+        super('levelSelect')
     }
 
     create() {
@@ -13,13 +13,15 @@ class Scene1 extends Phaser.Scene {
             }).setInteractive().on('pointerdown', function (pointer) {
                 // level => Jump to the next scene
                 
-               // if (i === 1) {
-                    this.scene.start('Scene2', { 'posX': 300, 'posY': 500 });
-               // }  /*else if (i === 2) {
-                   // this.scene.start('Sgarbage', { 'posX': 300, 'posY': 500 });
-               // } //else if (i === 3) {
-                    //this.scene.start('Sflower', { 'posX': 300, 'posY': 500 });
-                //}
+                if (i === 1) {
+                    this.scene.start('kitchen', { 'posX': 300, 'posY': 500 });
+                }  else if (i === 2) {
+                   this.scene.start('livingRoom', { 'posX': 300, 'posY': 500 });
+                } else if (i === 3) {
+                    this.scene.start('bedroom1', { 'posX': 300, 'posY': 500 });
+                } else if (i === 4) {
+                    this.scene.start('bedroom2', {'posX': 300, 'posY': 500 });
+                }
             
 
             }, this);
@@ -34,7 +36,7 @@ class Scene1 extends Phaser.Scene {
         text_exit.setInteractive();
         text_exit.on('pointerdown', function (pointer) {
             // start => move to the next screen
-            this.scene.start('Scene0')
+            this.scene.start('mainMenu')
         }, this);
 
            // adding exit to level page
