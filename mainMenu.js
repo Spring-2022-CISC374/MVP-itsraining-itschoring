@@ -3,9 +3,83 @@ class mainMenu extends Phaser.Scene {
         super('mainMenu');
     }
 
-    preload () {}
+    preload () {
+      this.load.image("kitchenBG","assets/kitchen.png");
+      this.load.image("livingRoomBG","assets/livingRoom.png");
+      this.load.image("bedroom1BG","assets/bedroom1.jpg");
+      this.load.image("arrow", "assets/arrow.png");
+      this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkLeft", "assets/spritesheets/charWalkLeft.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkRight", "assets/spritesheets/charWalkRight.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkUp", "assets/spritesheets/charWalkUp.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkDown", "assets/spritesheets/charWalkDown.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.image("foodbowl", "assets/foodbowl.png");
+      this.load.image("trash", "assets/trash-icon.jpg");
+      this.load.image("counter", "assets/counter.png");
+      this.load.image("sinkFridge", "assets/sinkFridge.png");
+      this.load.image("leftWall", "assets/leftWall.png");
+      this.load.image("right", "assets/right.png");
+      this.load.image("bottom", "assets/bottom.png");
+      this.load.image("table", "assets/table.png");
+      this.load.image("couchBarrier", "assets/couchBarrier.png");
+      this.load.image("chairBarrier", "assets/chairBarrier.png");
+      this.load.image("foodfunnel", "assets/foodfunnel.png")
+      this.load.image("food", "assets/food.png");
+      this.load.image("empty", "assets/empty.png");
+      this.load.image("plate","assets/plate.png");
+      this.load.image("stain1","assets/stain1.png");
+      this.load.image("stain2","assets/stain2.png");
+      this.load.image("stain3","assets/stain3.png");
+      this.load.image("flower1", "assets/01.png");
+      this.load.image("flower2", "assets/02.png");
+      this.load.image("flower3", "assets/03.png");
+      this.load.image("flower4", "assets/final.png");
+      this.load.image("watering", "assets/watering.png");
+      this.load.image("garbage", "assets/garbage.png");
+      this.load.image("trash", "assets/trash-icon.jpg");
+    }
 
     create () {
+        this.anims.create({
+            key: "walkLeftAnim",
+            frames: this.anims.generateFrameNumbers("walkLeft"),
+            frameRate: 8,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "walkRightAnim",
+            frames: this.anims.generateFrameNumbers("walkRight"),
+            frameRate: 8,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "walkUpAnim",
+            frames: this.anims.generateFrameNumbers("walkUp"),
+            frameRate: 8,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "walkDownAnim",
+            frames: this.anims.generateFrameNumbers("walkDown"),
+            frameRate: 8,
+            repeat: -1
+        });
+
         var text_style = {
             font: 'bold 32px Arial',
             color: '#fff'

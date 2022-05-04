@@ -11,12 +11,8 @@ class dishWashing extends Phaser.Scene{
         this.completion = data.completion;
     }
 
-    preload(){
-        this.load.image("plate","assets/plate.png");
-        this.load.image("stain1","assets/stain1.png");
-        this.load.image("stain2","assets/stain2.png");
-        this.load.image("stain3","assets/stain3.png");
-    }
+    preload(){}
+    
     create(){
         stainCount = 3;
         var plate = this.add.image(64, 64, "plate");

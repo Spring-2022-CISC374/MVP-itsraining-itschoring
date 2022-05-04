@@ -8,25 +8,10 @@ class livingRoom extends Phaser.Scene{
       this.lastPosY = data.posY;
   }
 
-  preload(){
-      this.load.image("background","assets/livingRoom.png");
-      this.load.image("arrow", "assets/arrow.png");
-      this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
-          frameWidth: 128,
-          frameHeight: 128
-      });
-      this.load.image("counter", "assets/counter.png");
-      this.load.image("sinkFridge", "assets/sinkFridge.png");
-      this.load.image("leftWall", "assets/leftWall.png");
-      this.load.image("right", "assets/right.png");
-      this.load.image("bottom", "assets/bottom.png");
-      this.load.image("table", "assets/table.png");
-      this.load.image("couchBarrier", "assets/couchBarrier.png");
-      this.load.image("chairBarrier", "assets/chairBarrier.png");
-      
-  }
+  preload(){}
+  
   create(){
-      var background = this.add.image(0, 0, "background");
+      var background = this.add.image(0, 0, "livingRoomBG");
       background.scale = 1.52;
       background.setOrigin(0, 0);
 
@@ -88,7 +73,6 @@ class livingRoom extends Phaser.Scene{
       }, this)
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
-      this.player.setScale(0.1);
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
 
@@ -142,20 +126,28 @@ class livingRoom extends Phaser.Scene{
       this.movePlayerManager();
   }
 
-  movePlayerManager(){
+movePlayerManager(){
 
-      this.player.setVelocity(0);
-  
-      if(this.cursorKeys.left.isDown){
-        this.player.setVelocityX(-gameSettings.playerSpeed);
-      }else if(this.cursorKeys.right.isDown){
-        this.player.setVelocityX(gameSettings.playerSpeed);
-      }
-  
-      if(this.cursorKeys.up.isDown){
-        this.player.setVelocityY(-gameSettings.playerSpeed);
-      }else if(this.cursorKeys.down.isDown){
-        this.player.setVelocityY(gameSettings.playerSpeed);
-      }
+    this.player.setVelocity(0);
+
+    if(this.cursorKeys.left.isDown){
+      this.player.setVelocityX(-gameSettings.playerSpeed);
+      this.player.play("walkLeftAnim", true);
+    } else if(this.cursorKeys.right.isDown){
+      this.player.setVelocityX(gameSettings.playerSpeed);
+      this.player.play("walkRightAnim", true);
     }
+
+    if(this.cursorKeys.up.isDown){
+      this.player.setVelocityY(-gameSettings.playerSpeed);
+      this.player.play("walkUpAnim", true);
+    } else if(this.cursorKeys.down.isDown){
+      this.player.setVelocityY(gameSettings.playerSpeed);
+      this.player.play("walkDownAnim", true);
+    }
+
+    if(this.cursorKeys.up.isUp && this.cursorKeys.down.isUp && this.cursorKeys.left.isUp && this.cursorKeys.right.isUp) {
+        this.player.setTexture("player");
+    }
+  }
 }

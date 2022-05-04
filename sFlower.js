@@ -9,13 +9,8 @@ class Sflower extends Phaser.Scene {
         this.completion = data.completion;
     }
 
-    preload() {
-        this.load.image("flower1", "assets/01.png");
-        this.load.image("flower2", "assets/02.png");
-        this.load.image("flower3", "assets/03.png");
-        this.load.image("flower4", "assets/final.png");
-        this.load.image("watering", "assets/watering.png");
-    }
+    preload() {}
+    
     create() {
         // //text
         // var text_style = {

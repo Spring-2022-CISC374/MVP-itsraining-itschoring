@@ -10,39 +10,8 @@ class kitchen extends Phaser.Scene{
       //[0] - dishes, [1] - dog, [2] - trash, [3] - flowers
   }
 
-  preload(){
-      this.load.image("background","assets/kitchen.png");
-      this.load.image("arrow", "assets/arrow.png");
-      this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
-        frameWidth: 128,
-        frameHeight: 128
-      });
-      this.load.spritesheet("walkLeft", "assets/spritesheets/charWalkLeft.png",{
-        frameWidth: 128,
-        frameHeight: 128
-      });
-      this.load.spritesheet("walkRight", "assets/spritesheets/charWalkRight.png",{
-        frameWidth: 128,
-        frameHeight: 128
-      });
-      this.load.spritesheet("walkUp", "assets/spritesheets/charWalkUp.png",{
-        frameWidth: 128,
-        frameHeight: 128
-      });
-      this.load.spritesheet("walkDown", "assets/spritesheets/charWalkDown.png",{
-        frameWidth: 128,
-        frameHeight: 128
-      });
-      this.load.image("foodbowl", "assets/foodbowl.png");
-      this.load.image("trash", "assets/trash-icon.jpg");
-      this.load.image("counter", "assets/counter.png");
-      this.load.image("sinkFridge", "assets/sinkFridge.png");
-      this.load.image("leftWall", "assets/leftWall.png");
-      this.load.image("right", "assets/right.png");
-      this.load.image("bottom", "assets/bottom.png");
-      this.load.image("table", "assets/table.png");
-      
-  }
+  preload(){}
+
   create(){
       console.log(this.completion);
 
@@ -51,34 +20,9 @@ class kitchen extends Phaser.Scene{
         this.scene.start('kitchenCompletion')
       }
 
-      var background = this.add.image(0, 0, "background");
+      var background = this.add.image(0, 0, "kitchenBG");
       background.scale = 1.67;
       background.setOrigin(0, 0);
-
-      this.anims.create({
-        key: "walkLeftAnim",
-        frames: this.anims.generateFrameNumbers("walkLeft"),
-        frameRate: 8,
-        repeat: -1
-      });
-      this.anims.create({
-        key: "walkRightAnim",
-        frames: this.anims.generateFrameNumbers("walkRight"),
-        frameRate: 8,
-        repeat: -1
-      });
-      this.anims.create({
-        key: "walkUpAnim",
-        frames: this.anims.generateFrameNumbers("walkUp"),
-        frameRate: 8,
-        repeat: -1
-      });
-      this.anims.create({
-        key: "walkDownAnim",
-        frames: this.anims.generateFrameNumbers("walkDown"),
-        frameRate: 8,
-        repeat: -1
-      });
 
       this.walls = this.physics.add.group();
       var counter = this.physics.add.image(0, 0, "counter");
@@ -214,7 +158,7 @@ class kitchen extends Phaser.Scene{
       this.movePlayerManager();
   }
 
-  movePlayerManager(){
+movePlayerManager(){
 
       this.player.setVelocity(0);
   
