@@ -11,7 +11,26 @@ class kitchen extends Phaser.Scene{
   preload(){
       this.load.image("background","assets/kitchen.png");
       this.load.image("arrow", "assets/arrow.png");
-      this.load.image("player", "assets/chracter1.png");
+      this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkLeft", "assets/spritesheets/charWalkLeft.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkRight", "assets/spritesheets/charWalkRight.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkUp", "assets/spritesheets/charWalkUp.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
+      this.load.spritesheet("walkDown", "assets/spritesheets/charWalkDown.png",{
+        frameWidth: 128,
+        frameHeight: 128
+      });
       this.load.image("foodbowl", "assets/foodbowl.png");
       this.load.image("trash", "assets/trash-icon.jpg");
       this.load.image("counter", "assets/counter.png");
@@ -26,6 +45,31 @@ class kitchen extends Phaser.Scene{
       var background = this.add.image(0, 0, "background");
       background.scale = 1.67;
       background.setOrigin(0, 0);
+
+      this.anims.create({
+        key: "walkLeftAnim",
+        frames: this.anims.generateFrameNumbers("walkLeft"),
+        frameRate: 8,
+        repeat: -1
+      });
+      this.anims.create({
+        key: "walkRightAnim",
+        frames: this.anims.generateFrameNumbers("walkRight"),
+        frameRate: 8,
+        repeat: -1
+      });
+      this.anims.create({
+        key: "walkUpAnim",
+        frames: this.anims.generateFrameNumbers("walkUp"),
+        frameRate: 8,
+        repeat: -1
+      });
+      this.anims.create({
+        key: "walkDownAnim",
+        frames: this.anims.generateFrameNumbers("walkDown"),
+        frameRate: 8,
+        repeat: -1
+      });
 
       this.walls = this.physics.add.group();
       var counter = this.physics.add.image(0, 0, "counter");
@@ -69,8 +113,8 @@ class kitchen extends Phaser.Scene{
           var y = this.player.body.position.y;
           if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
               this.scene.start("trashGame", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
+                  'posX': x + 64,
+                  'posY': y + 64
               })
           }
       }, this)
@@ -87,8 +131,8 @@ class kitchen extends Phaser.Scene{
         
           if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
               this.scene.start("Sflower", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
+                  'posX': x + 64,
+                  'posY': y + 64
               })
           }
       }, this)
@@ -100,7 +144,7 @@ class kitchen extends Phaser.Scene{
       foodArrow.setPosition(30, 135);
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
-      this.player.setScale(0.1);
+      this.player.setScale(1);
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
       var dishArrow = this.add.image(0, 0, "arrow");
@@ -108,13 +152,13 @@ class kitchen extends Phaser.Scene{
       dishArrow.setInteractive().on('pointerdown', function (pointer) {
       if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
             // Go to dishwashing minigame
-            this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+            this.scene.start("dishWashing", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
         }
       }, this);
       
       foodArrow.setInteractive().on('pointerdown', function (pointer) {
         if(this.player.body.position.x < 60 && this.player.body.position.y < 175){
-          this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+          this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
         }
       }, this);
 
@@ -154,14 +198,22 @@ class kitchen extends Phaser.Scene{
   
       if(this.cursorKeys.left.isDown){
         this.player.setVelocityX(-gameSettings.playerSpeed);
-      }else if(this.cursorKeys.right.isDown){
+        this.player.play("walkLeftAnim", true);
+      } else if(this.cursorKeys.right.isDown){
         this.player.setVelocityX(gameSettings.playerSpeed);
+        this.player.play("walkRightAnim", true);
       }
   
       if(this.cursorKeys.up.isDown){
         this.player.setVelocityY(-gameSettings.playerSpeed);
-      }else if(this.cursorKeys.down.isDown){
+        this.player.play("walkUpAnim", true);
+      } else if(this.cursorKeys.down.isDown){
         this.player.setVelocityY(gameSettings.playerSpeed);
+        this.player.play("walkDownAnim", true);
+      }
+
+      if(this.cursorKeys.up.isUp && this.cursorKeys.down.isUp && this.cursorKeys.left.isUp && this.cursorKeys.right.isUp) {
+          this.player.setTexture("player");
       }
     }
 }
