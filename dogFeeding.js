@@ -6,6 +6,7 @@ class dogFeeding extends Phaser.Scene {
     init(data) {
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
+        this.completion = data.completion;
     }
 
     preload() {
@@ -43,7 +44,8 @@ class dogFeeding extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY, 
+            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]});
         }
 
         this.exitGameManager();
@@ -52,7 +54,8 @@ class dogFeeding extends Phaser.Scene {
     exitGameManager() {
         if (this.food.y === this.foodbowl.y) {
             if (this.food.x - this.foodbowl.x > -100 && this.food.x - this.foodbowl.x < 100) {
-                this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY});
+                this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY, 
+                'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]});
             }
         }
     }

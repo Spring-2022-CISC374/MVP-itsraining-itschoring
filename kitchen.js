@@ -6,6 +6,8 @@ class kitchen extends Phaser.Scene{
   init(data){
       this.lastPosX = data.posX;
       this.lastPosY = data.posY;
+      this.completion = data.completion;
+      //[0] - dishes, [1] - dog, [2] - trash, [3] - flowers
   }
 
   preload(){
@@ -23,6 +25,13 @@ class kitchen extends Phaser.Scene{
       
   }
   create(){
+      console.log(this.completion);
+
+      if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
+        console.log("done")
+        this.scene.start('kitchenCompletion')
+      }
+
       var background = this.add.image(0, 0, "background");
       background.scale = 1.67;
       background.setOrigin(0, 0);
@@ -59,64 +68,77 @@ class kitchen extends Phaser.Scene{
       trash.setImmovable(true);
 
       // arrow icon for trash can 
-      var trashArrow = this.add.image(0, 0, "arrow");
-      trashArrow.setPosition(450, 300);
-      // Arrow click event => enter trash pickup mini-game scene
+      if(this.completion[2] == 0){
+        var trashArrow = this.add.image(0, 0, "arrow");
+        trashArrow.setPosition(450, 300);
+        // Arrow click event => enter trash pickup mini-game scene
 
-      trashArrow.setInteractive().on('pointerdown', function (pointer) {
-          // Limit the character to a certain range of the trash can to click to trigger
-          var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
-          if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
-              this.scene.start("trashGame", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })
-          }
-      }, this)
+        trashArrow.setInteractive().on('pointerdown', function (pointer) {
+            // Limit the character to a certain range of the trash can to click to trigger
+            var x = this.player.body.position.x;
+            var y = this.player.body.position.y;
+            if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
+                this.scene.start("trashGame", {
+                    'posX': x + 27.8,
+                    'posY': y + 44.45,
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
+                })
+            }
+        }, this)
+       }
 
       // watering arrow
-      var flowerArrow = this.add.image(0, 0, "arrow");
-      flowerArrow.setPosition(45, 330);
-      
-      // flower mini game
-      flowerArrow.setInteractive().on('pointerdown', function (pointer) {
-          // ppl moving area
-          var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
+      if(this.completion[3] == 0){
+        var flowerArrow = this.add.image(0, 0, "arrow");
+        flowerArrow.setPosition(45, 330);
         
-          if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
-              this.scene.start("Sflower", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })
-          }
-      }, this)
+        // flower mini game
+        flowerArrow.setInteractive().on('pointerdown', function (pointer) {
+            // ppl moving area
+            var x = this.player.body.position.x;
+            var y = this.player.body.position.y;
+            
+            if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
+                this.scene.start("Sflower", {
+                    'posX': x + 27.8,
+                    'posY': y + 44.45,
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
+                })
+            }
+        }, this)
+      }
 
       var foodbowl = this.add.image(0, 0, "foodbowl");
       foodbowl.setPosition(30, 165);
       foodbowl.setScale(1.75);
-      var foodArrow = this.add.image(0, 0, "arrow");
-      foodArrow.setPosition(30, 135);
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
       this.player.setScale(0.1);
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
-      var dishArrow = this.add.image(0, 0, "arrow");
-      dishArrow.setPosition(650, 90);
-      dishArrow.setInteractive().on('pointerdown', function (pointer) {
-      if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
-            // Go to dishwashing minigame
-            this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
-        }
-      }, this);
-      
-      foodArrow.setInteractive().on('pointerdown', function (pointer) {
-        if(this.player.body.position.x < 60 && this.player.body.position.y < 175){
-          this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
-        }
-      }, this);
+
+      if(this.completion[0] == 0){
+        var dishArrow = this.add.image(0, 0, "arrow");
+        dishArrow.setPosition(650, 90);
+        dishArrow.setInteractive().on('pointerdown', function (pointer) {
+        if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
+                // Go to dishwashing minigame
+                this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45,
+                'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+            }
+        }, this);
+      }
+
+      if(this.completion[1] == 0){
+        var foodArrow = this.add.image(0, 0, "arrow");
+        foodArrow.setPosition(30, 135);
+        foodArrow.setInteractive().on('pointerdown', function (pointer) {
+            if(this.player.body.position.x < 60 && this.player.body.position.y < 175){
+            this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45,
+            'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+            }
+        }, this);
+      }
 
       //add exit to room page - back to level page and exit
       var text_style = {
