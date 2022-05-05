@@ -88,7 +88,6 @@ class bedroom1 extends Phaser.Scene{
       foodArrow.setPosition(30, 135);
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
-      this.player.setScale(0.1);
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
       var dishArrow = this.add.image(0, 0, "arrow");
@@ -136,20 +135,28 @@ class bedroom1 extends Phaser.Scene{
       this.movePlayerManager();
   }
 
-  movePlayerManager(){
+movePlayerManager(){
 
-      this.player.setVelocity(0);
-  
-      if(this.cursorKeys.left.isDown){
-        this.player.setVelocityX(-gameSettings.playerSpeed);
-      }else if(this.cursorKeys.right.isDown){
-        this.player.setVelocityX(gameSettings.playerSpeed);
-      }
-  
-      if(this.cursorKeys.up.isDown){
-        this.player.setVelocityY(-gameSettings.playerSpeed);
-      }else if(this.cursorKeys.down.isDown){
-        this.player.setVelocityY(gameSettings.playerSpeed);
-      }
+    this.player.setVelocity(0);
+
+    if(this.cursorKeys.left.isDown){
+      this.player.setVelocityX(-gameSettings.playerSpeed);
+      this.player.play("walkLeftAnim", true);
+    } else if(this.cursorKeys.right.isDown){
+      this.player.setVelocityX(gameSettings.playerSpeed);
+      this.player.play("walkRightAnim", true);
     }
+
+    if(this.cursorKeys.up.isDown){
+      this.player.setVelocityY(-gameSettings.playerSpeed);
+      this.player.play("walkUpAnim", true);
+    } else if(this.cursorKeys.down.isDown){
+      this.player.setVelocityY(gameSettings.playerSpeed);
+      this.player.play("walkDownAnim", true);
+    }
+
+    if(this.cursorKeys.up.isUp && this.cursorKeys.down.isUp && this.cursorKeys.left.isUp && this.cursorKeys.right.isUp) {
+        this.player.setTexture("player");
+    }
+  }
 }
