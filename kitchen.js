@@ -86,7 +86,7 @@ class kitchen extends Phaser.Scene{
             var x = this.player.body.position.x;
             var y = this.player.body.position.y;
             
-            if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
+            if ((x < 100) && (y < 450 && y > 250)) {
                 this.scene.start("Sflower", {
                     'posX': x + 64,
                     'posY': y + 64,

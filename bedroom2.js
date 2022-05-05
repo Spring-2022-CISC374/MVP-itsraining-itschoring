@@ -1,6 +1,6 @@
-class bedroom1 extends Phaser.Scene{
+class bedroom2 extends Phaser.Scene{
   constructor(){
-      super("bedroom1");
+      super("bedroom2");
   }
 
   init(data){
@@ -11,7 +11,7 @@ class bedroom1 extends Phaser.Scene{
   preload(){}
 
   create(){
-      var background = this.add.image(0, 0, "bedroom1BG");
+      var background = this.add.image(0, 0, "bedroom2BG");
       background.scale = 1.67;
       background.setOrigin(0, 0);
 
@@ -34,75 +34,74 @@ class bedroom1 extends Phaser.Scene{
       right.setImmovable(true);
       bottom.setImmovable(true);
       table.setImmovable(true);
-      counter.setPosition(800, 360);
-      sinkFridge.setPosition(500, 120);
+      counter.setPosition(678, 303);
+      sinkFridge.setPosition(640, 120);
       leftWall.setPosition(20, 65);
-      right.setPosition(770, 200);
+      right.setPosition(742, 200);
       bottom.setPosition(500, 565);
-      table.setPosition(190, 200);
+      table.setPosition(195, 312);
       //load trash can 
       var trash = this.physics.add.image(0, 0, "trash");
-      trash.setPosition(350, 250); // 400 310
+      trash.setPosition(450, 340); // 400 310
       trash.setScale(0.2);
       trash.setImmovable(true);
 
       // arrow icon for trash can 
       var trashArrow = this.add.image(0, 0, "arrow");
-      trashArrow.setPosition(350, 200); 
+      trashArrow.setPosition(450, 300);
       // Arrow click event => enter trash pickup mini-game scene
 
       trashArrow.setInteractive().on('pointerdown', function (pointer) {
           // Limit the character to a certain range of the trash can to click to trigger
           var x = this.player.body.position.x;
           var y = this.player.body.position.y;
-          if ((x > 200 && x < 400) && (y < 220 && y > 100)) {
-            console.log("trash")
-              /*this.scene.start("trashGame", {
+          if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
+              this.scene.start("trashGame", {
                   'posX': x + 27.8,
                   'posY': y + 44.45
-              })*/
+              })
           }
       }, this)
 
       // watering arrow
-      var clothesArrow = this.add.image(0, 0, "arrow");
-      clothesArrow.setPosition(120, 390);
+      var flowerArrow = this.add.image(0, 0, "arrow");
+      flowerArrow.setPosition(45, 330);
       
       // flower mini game
-      clothesArrow.setInteractive().on('pointerdown', function (pointer) {
+      flowerArrow.setInteractive().on('pointerdown', function (pointer) {
           // ppl moving area
           var x = this.player.body.position.x;
           var y = this.player.body.position.y;
         
-          if ((x < 250) && (y > 300)) {
-              console.log("clothes");
-              /*this.scene.start("Sflower", {
+          if ((x < 100 && x > 0) && (y < 450 && y > 250)) {
+              this.scene.start("Sflower", {
                   'posX': x + 27.8,
                   'posY': y + 44.45
-              })*/
+              })
           }
       }, this)
+
+      var foodbowl = this.add.image(0, 0, "foodbowl");
+      foodbowl.setPosition(30, 165);
+      foodbowl.setScale(1.75);
+      var foodArrow = this.add.image(0, 0, "arrow");
+      foodArrow.setPosition(30, 135);
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
-
-      var bedArrow = this.add.image(0, 0, "arrow");
-      bedArrow.setPosition(670, 335);
-      bedArrow.setInteractive().on('pointerdown', function (pointer) {
-      if(this.player.body.position.x > 460 && this.player.body.position.y > 200){
-            console.log("bed")
-            //this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+      var dishArrow = this.add.image(0, 0, "arrow");
+      dishArrow.setPosition(650, 90);
+      dishArrow.setInteractive().on('pointerdown', function (pointer) {
+      if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
+            // Go to dishwashing minigame
+            this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
         }
       }, this);
       
-      var bookArrow = this.add.image(0, 0, "arrow");
-      bookArrow.setPosition(630, 490);
-
-      bookArrow.setInteractive().on('pointerdown', function (pointer) {
-        if(this.player.body.position.x > 510 && this.player.body.position.y > 350){
-          console.log("book")
-          //this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+      foodArrow.setInteractive().on('pointerdown', function (pointer) {
+        if(this.player.body.position.x < 60 && this.player.body.position.y < 175){
+          this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
         }
       }, this);
 
