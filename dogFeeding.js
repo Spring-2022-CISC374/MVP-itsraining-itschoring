@@ -12,6 +12,8 @@ class dogFeeding extends Phaser.Scene {
     preload() {}
 
     create() {
+        var background = this.add.image(game.config.width/2, game.config.height/2, "dogFeedingBG");
+        background.setScale(5.2);
         var foodFunnel = this.physics.add.image(0, 0, "foodfunnel");
         foodFunnel.setPosition(400, 80);
         foodFunnel.setScale(5);

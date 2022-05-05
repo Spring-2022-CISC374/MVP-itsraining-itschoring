@@ -45,11 +45,13 @@ class mainMenu extends Phaser.Scene {
       this.load.image("foodfunnel", "assets/foodfunnel.png")
       this.load.image("food", "assets/food.png");
       this.load.image("empty", "assets/empty.png");
+      this.load.image("dogFeedingBG", "assets/dogFeedingBG.png");
 
       this.load.image("plate","assets/plate.png");
       this.load.image("stain1","assets/stain1.png");
       this.load.image("stain2","assets/stain2.png");
       this.load.image("stain3","assets/stain3.png");
+      this.load.image("dishWashingBG", "assets/dishWashingBG.png");
 
       this.load.image("flower1", "assets/01.png");
       this.load.image("flower2", "assets/02.png");
@@ -59,6 +61,7 @@ class mainMenu extends Phaser.Scene {
 
       this.load.image("garbage", "assets/garbage.png");
       this.load.image("trash", "assets/trash-icon.jpg");
+      this.load.image("trashBG", "assets/trashBG.png");
 
       this.load.image("redbook", "assets/redbook.png");
       this.load.image("yellowbook", "assets/yellowbook.png");
