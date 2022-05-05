@@ -1,5 +1,3 @@
-var stainCount = 3;
-
 class dishWashing extends Phaser.Scene{
     constructor(){
         super("dishWashing");
@@ -16,23 +14,23 @@ class dishWashing extends Phaser.Scene{
     create(){
         var background = this.add.image(game.config.width/2, game.config.height/2, "dishWashingBG");
         background.setScale(5.3);
-
-        stainCount = 3;
+        this.plateCount = 3;
+        this.stainCount = 3;
         var plate = this.add.image(64, 64, "plate");
         plate.setPosition(game.config.width/2, game.config.height/2);
         plate.setScale(5);
-        var stain1 = this.add.image(0, 0, "stain1");
-        var stain2 = this.add.image(0, 0, "stain2");
-        var stain3 = this.add.image(0, 0, "stain3");
-        stain1.setScale(5);
-        stain2.setScale(5);
-        stain3.setScale(5);
-        stain1.setRandomPosition(200, 200, 400, 400);
-        stain2.setRandomPosition(200, 200, 400, 400);
-        stain3.setRandomPosition(200, 200, 400, 400);
-        stain1.setInteractive();
-        stain2.setInteractive();
-        stain3.setInteractive();
+        this.stain1 = this.physics.add.sprite(0, 0, "stain1");
+        this.stain2 = this.physics.add.sprite(0, 0, "stain2");
+        this.stain3 = this.physics.add.sprite(0, 0, "stain3");
+        this.stain1.setScale(5);
+        this.stain2.setScale(5);
+        this.stain3.setScale(5);
+        this.stain1.setRandomPosition(200, 200, 400, 400);
+        this.stain2.setRandomPosition(200, 200, 400, 400);
+        this.stain3.setRandomPosition(200, 200, 400, 400);
+        this.stain1.setInteractive();
+        this.stain2.setInteractive();
+        this.stain3.setInteractive();
         this.input.on('gameobjectdown', this.destroyStain, this);
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
@@ -40,9 +38,19 @@ class dishWashing extends Phaser.Scene{
     }
 
     destroyStain(pointer, gameObject) {
-        gameObject.destroy();
-        stainCount--;
-        if (stainCount <= 0) {
+        gameObject.disableBody(true, true);
+        this.stainCount--;
+        if (this.stainCount === 0) {
+            this.stain1.enableBody(true, 200, 200, true, true);
+            this.stain2.enableBody(true, 200, 200, true, true);
+            this.stain3.enableBody(true, 200, 200, true, true);
+            this.stain1.setRandomPosition(200, 200, 400, 400);
+            this.stain2.setRandomPosition(200, 200, 400, 400);
+            this.stain3.setRandomPosition(200, 200, 400, 400);
+            this.plateCount--;
+            this.stainCount = 3;
+        }
+        if (this.plateCount <= 0) {
             this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY, 
             'completion': [1, this.completion[1], this.completion[2], this.completion[3]]});
         }
