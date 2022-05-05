@@ -76,6 +76,12 @@ class mainMenu extends Phaser.Scene {
       this.load.image("carpet", "assets/carpet.png");
       this.load.image("dirt", "assets/dirt.png");
       this.load.image("vacuum", "assets/vacuum.png");
+
+      this.load.image("bed1V1", "assets/bed1V1.png");
+      this.load.image("bed1V2", "assets/bed1V2.png");
+      this.load.image("bed1V3", "assets/bed1V3.png");
+      this.load.image("bed1V4", "assets/bed1V4.png");
+      this.load.image("greenButton", "assets/greenButton.png");
     }
 
     create () {
