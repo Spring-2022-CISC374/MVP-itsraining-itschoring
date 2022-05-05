@@ -43,10 +43,10 @@ class kitchen extends Phaser.Scene{
       right.setImmovable(true);
       bottom.setImmovable(true);
       table.setImmovable(true);
-      counter.setPosition(678, 303);
-      sinkFridge.setPosition(640, 120);
-      leftWall.setPosition(20, 65);
-      right.setPosition(742, 200);
+      counter.setPosition(723, 303);
+      sinkFridge.setPosition(685, 120);
+      leftWall.setPosition(-25, 45);
+      right.setPosition(787, 200);
       bottom.setPosition(500, 565);
       table.setPosition(195, 312);
       //load trash can 

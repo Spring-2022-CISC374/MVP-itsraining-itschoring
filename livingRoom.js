@@ -44,7 +44,7 @@ class livingRoom extends Phaser.Scene{
       chairBarrierR.setImmovable(true);
       chairBarrierL.setImmovable(true);
       counter.setPosition(678, 303);
-      sinkFridge.setPosition(450, 90);
+      sinkFridge.setPosition(450, 65);
       leftWall.setPosition(20, 65);
       right.setPosition(742, 200);
       bottom.setPosition(500, 520);

@@ -16,7 +16,7 @@ class levelSelect extends Phaser.Scene {
                 if (i === 1) {
                     this.scene.start('kitchen', { 'posX': 300, 'posY': 500, 'completion': [0,0,0,0] });
                 }  else if (i === 2) {
-                   this.scene.start('livingRoom', { 'posX': 300, 'posY': 450 });
+                   this.scene.start('livingRoom', { 'posX': 300, 'posY': 430 });
                 } else if (i === 3) {
                     this.scene.start('bedroom1', { 'posX': 300, 'posY': 500 });
                 } else if (i === 4) {
