@@ -14,6 +14,9 @@ class vacuuming extends Phaser.Scene {
     preload() {}
 
     create() {
+        var carpet = this.add.image(0, 0, "carpet");
+        carpet.setPosition(100, 200);
+        carpet.setScale(1.5);
         this.cursorKeys = this.input.keyboard.createCursorKeys();
 
         this.add.text(200, 325, "Use Arrow Keys to move vacuum and pick up dirt");
