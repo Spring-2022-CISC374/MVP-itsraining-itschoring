@@ -32,7 +32,7 @@ class dogFeeding extends Phaser.Scene {
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.down = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 
-        this.add.text(200, 325, "Click funnel to dispense food at the right time");
+        this.add.text(200, 325, "Press Down Arrow to dispense food at the right time");
     }
 
     update() {
