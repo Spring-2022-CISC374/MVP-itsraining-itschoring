@@ -61,6 +61,7 @@ class mainMenu extends Phaser.Scene {
 
       this.load.image("garbage", "assets/garbage.png");
       this.load.image("trash", "assets/trash-icon.jpg");
+      this.load.image("trashBG", "assets/trashBG.png");
 
       this.load.image("redbook", "assets/redbook.png");
       this.load.image("yellowbook", "assets/yellowbook.png");
