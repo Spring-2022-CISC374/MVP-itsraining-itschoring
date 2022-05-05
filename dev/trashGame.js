@@ -1,54 +1,49 @@
 class TrashGame extends Phaser.Scene {
     constructor() {
-        super("TrashGame");
+        super("trashGame");
     }
 
     init(data) {
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
+        this.completion = data.completion;
     }
 
-    preload() {
-        this.load.image("garbage", "assets/garbage.png");
-        this.load.image("trash", "assets/trash-icon.jpg");
-
-        this.load.image("foodfunnel", "assets/foodfunnel.png")
-        this.load.image("foodbowl", "assets/foodbowl.png");
-        this.load.image("food", "assets/food.png");
-        this.load.image("empty", "assets/empty.png");
-    }
+    preload() {}
 
     create() {
-           
+        var background = this.add.image(game.config.width/2, game.config.height/2, "trashBG");
+        background.setScale(5);
+
+        this.trashCount = 5;
         
-        this.add.text(200, 325, "Use Arrow Keys to move trash can");
-        this.add.text(100, 375, "Try to catch as much trash as possible before time runs out");
+        this.add.text(200, 125, "Use Arrow Keys to move trash can");
+        this.add.text(150, 175, "Catch 5 bags of trash as fast as possible");
    
         // Score
-        this.score = 0;
-        this.scoreText = this.add.text(70, 30, 'Score' + this.score)
+        // this.score = 5;
+        // this.scoreText = this.add.text(70, 30, 'Score' + this.score)
         // Countdown to 30 seconds to exit
-        var countDown = this.add.text(30, 30, 30)
-        let i = 30;
-        this.timer = this.time.addEvent({
-            delay: 1000,
-            loop: true,
-            callback: () => {
-                // Reset the countdown text
-                countDown.setText(--i);
-                if (i === 0) {
-                    console.log(this.score)
-                    this.scene.start("Scene2", { 'posX': this.lastPosX, 'posY': this.lastPosY });
-                }
-            }
-        })
+        // var countDown = this.add.text(30, 30, 30)
+        // let i = 30;
+        // this.timer = this.time.addEvent({
+        //     delay: 1000,
+        //     loop: true,
+        //     callback: () => {
+        //         // Reset the countdown text
+        //         countDown.setText(--i);
+        //         if (i === 0) {
+        //             console.log(this.score)
+        //             this.scene.start("kitchen", { 'posX': this.lastPosX, 'posY': this.lastPosY,
+        //             'completion': [this.completion[0], this.completion[1], 1, this.completion[3]] });
+        //         }
+        //     }
+        // })
 
-        this.food = this.physics.add.image(0, 0, "empty");
-        var foodVar = this.food;
         // Generate trash cans
         this.trash = this.physics.add.sprite(0, 0, "trash");
         this.trash.setRandomPosition(200, 600, 400, 0);
-        this.trash.setScale(0.15);
+        this.trash.setScale(0.3);
         this.trash.setCollideWorldBounds(true);
         this.cursorKeys = this.input.keyboard.createCursorKeys();
 
@@ -87,7 +82,8 @@ class TrashGame extends Phaser.Scene {
             this.trash.setVelocityX(gameSettings.playerSpeed * 2);
         }
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
-            this.scene.start("Scene2", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY,
+            'completion': [this.completion[0], this.completion[1], 1, this.completion[3]]});
         }
     }
 
@@ -96,8 +92,13 @@ class TrashGame extends Phaser.Scene {
         // this.physics.world.disableBody(single.body)
 
         // Catch one +10 points
-        single.disableBody(true, true)
-        this.score += 10;
-        this.scoreText.setText('Score' + this.score)
+        single.disableBody(true, true);
+        this.trashCount--;
+        if (this.trashCount <= 0) {
+            this.scene.start("kitchen", { 'posX': this.lastPosX, 'posY': this.lastPosY,
+            'completion': [this.completion[0], this.completion[1], 1, this.completion[3]] });
+        }
+        // this.score += 10;
+        // this.scoreText.setText('Score' + this.score)
     }
 }
