@@ -20,7 +20,7 @@ class levelSelect extends Phaser.Scene {
                 } else if (i === 3) {
                     this.scene.start('bedroom1', { 'posX': 650, 'posY': 240 });
                 } else if (i === 4) {
-                    this.scene.start('bedroom2', {'posX': 300, 'posY': 500 });
+                    this.scene.start('bedroom2', {'posX': 120, 'posY': 250 });
                 }
             
 
