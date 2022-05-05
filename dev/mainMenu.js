@@ -4,6 +4,8 @@ class mainMenu extends Phaser.Scene {
     }
 
     preload () {
+      this.load.image("titleBG", "assets/titleBG.jpg");
+
       this.load.image("kitchenBG","assets/kitchen.png");
       this.load.image("livingRoomBG","assets/livingRoom.png");
       this.load.image("bedroom1BG","assets/bedroom1.jpg");
@@ -79,6 +81,9 @@ class mainMenu extends Phaser.Scene {
     }
 
     create () {
+        var background = this.add.image(game.config.width/2, game.config.height/2, "titleBG");
+        background.setScale(0.7);
+
         this.anims.create({
             key: "walkLeftAnim",
             frames: this.anims.generateFrameNumbers("walkLeft"),

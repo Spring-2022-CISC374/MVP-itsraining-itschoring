@@ -184,6 +184,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devassets/table.png"
   },
   {
+    "revision": "94c6562f14bded5ff4a16289014e5456",
+    "url": "/MVP-itsraining-itschoring/devassets/titleBG.jpg"
+  },
+  {
     "revision": "b5dbad63dcd2f07252d186b043da2d8d",
     "url": "/MVP-itsraining-itschoring/devassets/trash-icon.jpg"
   },
@@ -256,7 +260,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devkitchenCompletion.js"
   },
   {
-    "revision": "064199cb9e1c99b060e3b10795d237e5",
+    "revision": "f8207cf560ad94bcc60016dc95c5c3b2",
     "url": "/MVP-itsraining-itschoring/devlevelSelect.js"
   },
   {
@@ -264,7 +268,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devlivingRoom.js"
   },
   {
-    "revision": "a4aa289df17b999a0a5c3cfaca0c904f",
+    "revision": "5073ec458e3140184296076d3bcf107c",
     "url": "/MVP-itsraining-itschoring/devmainMenu.js"
   },
   {

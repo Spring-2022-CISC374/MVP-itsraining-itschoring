@@ -7,24 +7,39 @@ class levelSelect extends Phaser.Scene {
         var centerX = this.physics.world.bounds.centerX;
 
         for (let i = 1; i <= 4; i++) {
-            this.add.text(centerX - 75, 125*i, 'level ' + i, {
-                font: 'bold 32px Arial',
-                color: '#fff'
-            }).setInteractive().on('pointerdown', function (pointer) {
-                // level => Jump to the next scene
-                
-                if (i === 1) {
+            if (i === 1) {
+                this.add.text(centerX - 75, 125, "Kitchen", {
+                    font: 'bold 32px Arial',
+                    color: '#fff'
+                }).setInteractive().on('pointerdown', function (pointer) {
+                    // level => Jump to the next scene
                     this.scene.start('kitchen', { 'posX': 300, 'posY': 500, 'completion': [0,0,0,0] });
-                }  else if (i === 2) {
-                   this.scene.start('livingRoom', { 'posX': 300, 'posY': 430 });
-                } else if (i === 3) {
+                }, this);
+            } else if (i === 2) {
+                this.add.text(centerX - 75, 250, "Living Room", {
+                    font: 'bold 32px Arial',
+                    color: '#fff'
+                }).setInteractive().on('pointerdown', function (pointer) {
+                    // level => Jump to the next scene
+                    this.scene.start('livingRoom', { 'posX': 300, 'posY': 430 });
+                }, this);
+            } else if (i === 3) {
+                this.add.text(centerX - 75, 375, "Bedroom 1", {
+                    font: 'bold 32px Arial',
+                    color: '#fff'
+                }).setInteractive().on('pointerdown', function (pointer) {
+                    // level => Jump to the next scene
                     this.scene.start('bedroom1', { 'posX': 650, 'posY': 240 });
-                } else if (i === 4) {
+                }, this);
+            } else if (i === 4) {
+                this.add.text(centerX - 75, 500, "Bedroom 2", {
+                    font: 'bold 32px Arial',
+                    color: '#fff'
+                }).setInteractive().on('pointerdown', function (pointer) {
+                    // level => Jump to the next scene
                     this.scene.start('bedroom2', {'posX': 120, 'posY': 250 });
-                }
-            
-
-            }, this);
+                }, this);
+            }
         }
         // adding exit to level page
         var text_style = {
