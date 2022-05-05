@@ -88,9 +88,7 @@ class livingRoom extends Phaser.Scene{
       carpetArrow.setPosition(390, 250);
       carpetArrow.setInteractive().on('pointerdown', function (pointer) {
         if(this.player.body.position.x > 270 && this.player.body.position.x < 450 && this.player.body.position.y < 230 && this.player.body.position.y > 150){
-            //replace "dogFeeding" with the name of the vacuum minigame scene
-            console.log("start minigame")
-            //this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+            this.scene.start("vacuuming", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
         }
       }, this);
 
@@ -124,7 +122,7 @@ class livingRoom extends Phaser.Scene{
       this.movePlayerManager();
   }
 
-movePlayerManager(){
+  movePlayerManager(){
 
     this.player.setVelocity(0);
 

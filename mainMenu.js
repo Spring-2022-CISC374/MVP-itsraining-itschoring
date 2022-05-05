@@ -31,34 +31,46 @@ class mainMenu extends Phaser.Scene {
       });
       this.load.image("foodbowl", "assets/foodbowl.png");
       this.load.image("trash", "assets/trash-icon.jpg");
+
       this.load.image("counter", "assets/counter.png");
       this.load.image("sinkFridge", "assets/sinkFridge.png");
       this.load.image("leftWall", "assets/leftWall.png");
       this.load.image("right", "assets/right.png");
       this.load.image("bottom", "assets/bottom.png");
       this.load.image("table", "assets/table.png");
+
       this.load.image("couchBarrier", "assets/couchBarrier.png");
       this.load.image("chairBarrier", "assets/chairBarrier.png");
+
       this.load.image("foodfunnel", "assets/foodfunnel.png")
       this.load.image("food", "assets/food.png");
       this.load.image("empty", "assets/empty.png");
+
       this.load.image("plate","assets/plate.png");
       this.load.image("stain1","assets/stain1.png");
       this.load.image("stain2","assets/stain2.png");
       this.load.image("stain3","assets/stain3.png");
+
       this.load.image("flower1", "assets/01.png");
       this.load.image("flower2", "assets/02.png");
       this.load.image("flower3", "assets/03.png");
       this.load.image("flower4", "assets/final.png");
       this.load.image("watering", "assets/watering.png");
+
       this.load.image("garbage", "assets/garbage.png");
       this.load.image("trash", "assets/trash-icon.jpg");
+
       this.load.image("redbook", "assets/redbook.png");
       this.load.image("yellowbook", "assets/yellowbook.png");
       this.load.image("greenbook", "assets/greenbook.png");
       this.load.image("bluebook", "assets/bluebook.png");
       this.load.image("cyanbook", "assets/cyanbook.png");
       this.load.image("pinkbook", "assets/pinkbook.png");
+
+      this.load.image("vacuumingBG", "assets/vacuumingBG.png");
+      this.load.image("carpet", "assets/carpet.png");
+      this.load.image("dirt", "assets/dirt.png");
+      this.load.image("vacuum", "assets/vacuum.png");
     }
 
     create () {

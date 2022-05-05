@@ -29,7 +29,7 @@ class dogFeeding extends Phaser.Scene {
         foodFunnel.setInteractive().on('pointerdown', function (pointer) {
             foodVar.setPosition(foodFunnel.x, foodFunnel.y + 80);
             foodVar.setTexture("food");
-            foodVar.setVelocityY(200);
+            foodVar.setVelocityY(150);
         })
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);

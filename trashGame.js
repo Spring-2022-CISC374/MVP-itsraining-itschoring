@@ -37,8 +37,6 @@ class TrashGame extends Phaser.Scene {
             }
         })
 
-        this.food = this.physics.add.image(0, 0, "empty");
-        var foodVar = this.food;
         // Generate trash cans
         this.trash = this.physics.add.sprite(0, 0, "trash");
         this.trash.setRandomPosition(200, 600, 400, 0);
