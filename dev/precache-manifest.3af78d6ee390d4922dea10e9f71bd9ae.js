@@ -32,12 +32,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devassets/bed1V4.png"
   },
   {
-    "revision": "1610ee560ace9fcf287cc03a9cbd8145",
-    "url": "/MVP-itsraining-itschoring/devassets/bedroom1.JPG"
-  },
-  {
     "revision": "8c0e783366bebc0b89731281201ac660",
     "url": "/MVP-itsraining-itschoring/devassets/bedroom1CleanBooks.jpg"
+  },
+  {
+    "revision": "1610ee560ace9fcf287cc03a9cbd8145",
+    "url": "/MVP-itsraining-itschoring/devassets/bedroom1default.jpg"
   },
   {
     "revision": "7c73ccc0458551563a054937fa99fcca",
@@ -57,7 +57,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "24602e72a7e7fd748fc3121aee8e4dbf",
-    "url": "/MVP-itsraining-itschoring/devassets/bookSortingv2BG.PNG"
+    "url": "/MVP-itsraining-itschoring/devassets/bookSortingv2Background.png"
   },
   {
     "revision": "fb34ce948be346bfde77743c591dafe5",
@@ -97,7 +97,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "fb98f6dd652a7c7bed20caa585f9bd5d",
-    "url": "/MVP-itsraining-itschoring/devassets/dogFeedingBG.PNG"
+    "url": "/MVP-itsraining-itschoring/devassets/dogFeedingBackground.png"
   },
   {
     "revision": "c9477b1f1820f9acfb93eebb2e6679c2",
@@ -213,7 +213,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "486ca96e4689bb141bd068401d340f62",
-    "url": "/MVP-itsraining-itschoring/devassets/trashBG.PNG"
+    "url": "/MVP-itsraining-itschoring/devassets/trashBackground.png"
   },
   {
     "revision": "0132eeb8b9842b7b19b5b44ccc42142f",
@@ -221,7 +221,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "b23015f564c974168a134b57297259e3",
-    "url": "/MVP-itsraining-itschoring/devassets/vacuumingBG.PNG"
+    "url": "/MVP-itsraining-itschoring/devassets/vacuumingBackground.png"
   },
   {
     "revision": "1a048a1d18a8130158ff0d7934a6d4f8",
@@ -288,7 +288,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devlivingRoom.js"
   },
   {
-    "revision": "8507519b5e25d213f583f9079fec4ae7",
+    "revision": "4b3c37b64fb7aae6ebfa75b3e4a33f46",
     "url": "/MVP-itsraining-itschoring/devmainMenu.js"
   },
   {
