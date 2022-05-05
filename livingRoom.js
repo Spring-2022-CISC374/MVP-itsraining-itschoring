@@ -80,9 +80,7 @@ class livingRoom extends Phaser.Scene{
       bookArrow.setPosition(622, 70);
       bookArrow.setInteractive().on('pointerdown', function (pointer) {
       if(this.player.body.position.x > 525 && this.player.body.position.y < 165 && this.player.body.position.x < 660){
-            //replace "dishWashing" with the name of the bookshelf minigame scene
-            console.log("start minigame")
-            //this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+            this.scene.start("bookSorting", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
         }
       }, this);
       
