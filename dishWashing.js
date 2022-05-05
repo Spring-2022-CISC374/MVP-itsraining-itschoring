@@ -14,6 +14,9 @@ class dishWashing extends Phaser.Scene{
     preload(){}
     
     create(){
+        var background = this.add.image(game.config.width/2, game.config.height/2, "dishWashingBG");
+        background.setScale(5.3);
+
         stainCount = 3;
         var plate = this.add.image(64, 64, "plate");
         plate.setPosition(game.config.width/2, game.config.height/2);
