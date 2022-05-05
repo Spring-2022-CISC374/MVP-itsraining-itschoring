@@ -16,6 +16,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devassets/arrow.png"
   },
   {
+    "revision": "2a20ad85579225018d431667be5b06ec",
+    "url": "/MVP-itsraining-itschoring/devassets/bed1V1.png"
+  },
+  {
+    "revision": "362046893540effe3f0e5244c3d35261",
+    "url": "/MVP-itsraining-itschoring/devassets/bed1V2.png"
+  },
+  {
+    "revision": "955998ab4bfa221aafb56d048918686b",
+    "url": "/MVP-itsraining-itschoring/devassets/bed1V3.png"
+  },
+  {
+    "revision": "785e738533ebadd602576a75550274c0",
+    "url": "/MVP-itsraining-itschoring/devassets/bed1V4.png"
+  },
+  {
     "revision": "1610ee560ace9fcf287cc03a9cbd8145",
     "url": "/MVP-itsraining-itschoring/devassets/bedroom1.JPG"
   },
@@ -110,6 +126,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "662a2bbc3da3b39822c02de03a6b97b8",
     "url": "/MVP-itsraining-itschoring/devassets/garbage.png"
+  },
+  {
+    "revision": "b2148030e6836c620aed5e9c74687b2a",
+    "url": "/MVP-itsraining-itschoring/devassets/greenButton.png"
   },
   {
     "revision": "75c7960487bb87846ae6dc0032b2459a",
@@ -212,7 +232,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devassets/yellowbook.png"
   },
   {
-    "revision": "99deee66a6b0fd6c1e1610fcd86610a1",
+    "revision": "e90eeb545f6660b803538768780424a6",
     "url": "/MVP-itsraining-itschoring/devbedroom1.js"
   },
   {
@@ -240,15 +260,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devfavicon.ico"
   },
   {
-    "revision": "3379a0f6dffcfbb3dc694b25857f7390",
+    "revision": "b9221fd18fff5c126ecb6f69e454ae25",
     "url": "/MVP-itsraining-itschoring/devgame.js"
   },
   {
-    "revision": "db8d4e41a0e157c62f3e",
-    "url": "/MVP-itsraining-itschoring/devgen.main.3795ceba4dc7d4dd1a76.bundle.js"
+    "revision": "28b67cafb13bb3e7c0ee",
+    "url": "/MVP-itsraining-itschoring/devgen.main.b3fac204bb860b616c47.bundle.js"
   },
   {
-    "revision": "6a9671ae137785ca352a3dc2914ad196",
+    "revision": "f59e16f8576b9fd6c2c4b4970f7b37e7",
     "url": "/MVP-itsraining-itschoring/devindex.html"
   },
   {
@@ -268,8 +288,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devlivingRoom.js"
   },
   {
-    "revision": "5073ec458e3140184296076d3bcf107c",
+    "revision": "8507519b5e25d213f583f9079fec4ae7",
     "url": "/MVP-itsraining-itschoring/devmainMenu.js"
+  },
+  {
+    "revision": "2ed5635d9eb14764a014f950387f2d47",
+    "url": "/MVP-itsraining-itschoring/devmakeBed1.js"
   },
   {
     "revision": "234076a504db07022e8f644c3a970374",
@@ -280,7 +304,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devphaser.min.js"
   },
   {
-    "revision": "5d89abcbf4ace94ed2f314b09beca0e7",
+    "revision": "934fec5bf74859da975bc30972b66869",
     "url": "/MVP-itsraining-itschoring/devsFlower.js"
   },
   {

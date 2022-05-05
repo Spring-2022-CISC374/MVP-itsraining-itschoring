@@ -23,8 +23,11 @@ class Sflower extends Phaser.Scene {
         // initial grow of flower
         this.flower_time = 0;  // grow time
         // time
-        var timeText = this.add.text(30, 30, this.flower_time);
+        
+        var timeText = this.add.text(100, 70, this.flower_time);
+        
         this.timer = this.time.addEvent({
+            
             delay: 1000,
             loop: true,
             callback: () => {
@@ -47,16 +50,16 @@ class Sflower extends Phaser.Scene {
         watering.setInteractive().on('pointerdown', function (pointer) {
             var _index = 0;
             // timmer
-            if (this.flower_time >= 3 && this.flower_time <= 5) {
+            if (this.flower_time >= 3 && this.flower_time <= 6) {
                 _index = 2
-            } else if (this.flower_time >= 6 && this.flower_time <= 8) {
+            } else if (this.flower_time >= 6 && this.flower_time <= 9) {
                 _index = 3
-            } else if (this.flower_time > 10) {
+            } else if (this.flower_time > 9) {
                 _index = 4
             }
 
             if (_index > this.index) {
-                this._flower.disableBody(true, true);  // 清除原有的花
+                this._flower.disableBody(true, true);  // deleting old flower
                 this._flower = this.physics.add.image(0, 0, "flower" + _index)
                 this.setFlower(this._flower, _index)
             }
@@ -67,7 +70,8 @@ class Sflower extends Phaser.Scene {
             color: '#fff'
         }
         var centerX = this.physics.world.bounds.centerX;
-        var text_title1 = this.add.text(centerX - 100, 150, "Click on the kettle!!!", text_style);
+        var text_title1 = this.add.text(50, 100, "To make the flowers grow", text_style);
+        var text_title1 = this.add.text(50, 150, "Click on green water bottle in every 3 seconds.", text_style);
         //text
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }

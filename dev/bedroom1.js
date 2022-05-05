@@ -92,7 +92,7 @@ class bedroom1 extends Phaser.Scene{
       bedArrow.setInteractive().on('pointerdown', function (pointer) {
       if(this.player.body.position.x > 460 && this.player.body.position.y > 200){
             console.log("bed")
-            //this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+            this.scene.start("makeBed1", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
         }
       }, this);
       
