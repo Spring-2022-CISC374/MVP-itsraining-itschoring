@@ -11,6 +11,9 @@ class bookSorting extends Phaser.Scene{
     preload(){}
     
     create(){
+        var background = this.add.image(game.config.width/2, game.config.height/2, "bookSortingBG");
+        background.setScale(2);
+
         this.bookCount = 4;
         this.redbook = this.add.image(0, 0, "redbook");
         this.yellowbook = this.add.image(0, 0, "yellowbook");
@@ -35,7 +38,7 @@ class bookSorting extends Phaser.Scene{
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        this.add.text(200, 100, "Sort in order: red, yellow, green, blue");
+        this.add.text(175, 100, "Click to sort in order: red, yellow, green, blue");
     }
 
     removeBook(pointer, gameObject) {
