@@ -66,6 +66,8 @@ class mainMenu extends Phaser.Scene {
       this.load.image("bluebook", "assets/bluebook.png");
       this.load.image("cyanbook", "assets/cyanbook.png");
       this.load.image("pinkbook", "assets/pinkbook.png");
+      this.load.image("bookSortingBG", "assets/bookSortingBG.png");
+      this.load.image("bookSortingv2BG", "assets/bookSortingv2BG.png");
 
       this.load.image("vacuumingBG", "assets/vacuumingBG.png");
       this.load.image("carpet", "assets/carpet.png");

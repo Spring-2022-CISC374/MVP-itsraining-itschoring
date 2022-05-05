@@ -101,8 +101,7 @@ class bedroom1 extends Phaser.Scene{
 
       bookArrow.setInteractive().on('pointerdown', function (pointer) {
         if(this.player.body.position.x > 510 && this.player.body.position.y > 350){
-          console.log("book")
-          //this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
+          this.scene.start("bookSortingv2", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
         }
       }, this);
 
