@@ -8,7 +8,7 @@ class mainMenu extends Phaser.Scene {
 
       this.load.image("kitchenBG","assets/kitchen.png");
       this.load.image("livingRoomBG","assets/livingRoom.png");
-      this.load.image("bedroom1BG","assets/bedroom1.jpg");
+      this.load.image("bedroom1BG","assets/bedroom1default.jpg");
       this.load.image("bedroom2BG", "assets/bedroom2.png");
       this.load.image("arrow", "assets/arrow.png");
       this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
@@ -47,7 +47,7 @@ class mainMenu extends Phaser.Scene {
       this.load.image("foodfunnel", "assets/foodfunnel.png")
       this.load.image("food", "assets/food.png");
       this.load.image("empty", "assets/empty.png");
-      this.load.image("dogFeedingBG", "assets/dogFeedingBG.png");
+      this.load.image("dogFeedingBG", "assets/dogFeedingBackground.png");
 
       this.load.image("plate","assets/plate.png");
       this.load.image("stain1","assets/stain1.png");
@@ -63,7 +63,7 @@ class mainMenu extends Phaser.Scene {
 
       this.load.image("garbage", "assets/garbage.png");
       this.load.image("trash", "assets/trash-icon.jpg");
-      this.load.image("trashBG", "assets/trashBG.png");
+      this.load.image("trashBG", "assets/trashBackground.png");
 
       this.load.image("redbook", "assets/redbook.png");
       this.load.image("yellowbook", "assets/yellowbook.png");
@@ -72,9 +72,9 @@ class mainMenu extends Phaser.Scene {
       this.load.image("cyanbook", "assets/cyanbook.png");
       this.load.image("pinkbook", "assets/pinkbook.png");
       this.load.image("bookSortingBG", "assets/bookSortingBG.png");
-      this.load.image("bookSortingv2BG", "assets/bookSortingv2BG.png");
+      this.load.image("bookSortingv2BG", "assets/bookSortingv2Background.png");
 
-      this.load.image("vacuumingBG", "assets/vacuumingBG.png");
+      this.load.image("vacuumingBG", "assets/vacuumingBackground.png");
       this.load.image("carpet", "assets/carpet.png");
       this.load.image("dirt", "assets/dirt.png");
       this.load.image("vacuum", "assets/vacuum.png");
