@@ -7,7 +7,7 @@ var config = {
     height: 700,
     type: Phaser.AUTO,
     backgroundColor: "0x333333",
-    scene:[mainMenu, levelSelect, kitchen, kitchenCompletion, livingRoom, bedroom1, dishWashing, dogFeeding, Sgarbage, TrashGame, Sflower],
+    scene:[mainMenu, levelSelect, kitchen, kitchenCompletion, livingRoom, bedroom1, dishWashing, dogFeeding, Sgarbage, TrashGame, Sflower, bookSorting],
     pixelArt:true,
     physics: {
         default: 'arcade',
