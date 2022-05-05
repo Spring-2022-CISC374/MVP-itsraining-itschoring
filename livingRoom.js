@@ -122,7 +122,7 @@ class livingRoom extends Phaser.Scene{
       this.movePlayerManager();
   }
 
-movePlayerManager(){
+  movePlayerManager(){
 
     this.player.setVelocity(0);
 
