@@ -6,6 +6,7 @@ class bedroom2 extends Phaser.Scene{
   init(data){
       this.lastPosX = data.posX;
       this.lastPosY = data.posY;
+      this.completion = data.completion;
   }
 
   preload(){}
@@ -54,15 +55,16 @@ class bedroom2 extends Phaser.Scene{
       trashArrow.setInteractive().on('pointerdown', function (pointer) {
           // Limit the character to a certain range of the trash can to click to trigger
           var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
-          if ((x > 310 && x < 440) && (y < 250)) {
-              console.log("trash")
-              /*this.scene.start("trashGame", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })*/
-          }
-      }, this)
+            var y = this.player.body.position.y;
+            if ((x > 310 && x < 440) && (y < 250)) {
+                this.scene.start("trashGame", {
+                    'posX': x + 64,
+                    'posY': y + 64,
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                    'level': 4,
+                })
+            }
+        }, this)
 
       var bedArrow = this.add.image(0, 0, "arrow");
       bedArrow.setPosition(150, 330);

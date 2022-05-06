@@ -8,20 +8,34 @@ class TrashGame extends Phaser.Scene {
         this.lastPosY = data.posY;
         this.completion = data.completion;
         this.level = data.level || 1;
-        const mapSpeed = {
-            1: 150,
-            2: 200,
-            3: 250,
-            4: 300,
-        }
-        this.speed = mapSpeed[data.level];  // Speed of garbage dropping
+        // Speed of garbage dropping
+        this.map = [{
+            speed: 150,
+            count: 5,
+            backScene: 'kitchen',
+        }, {
+            speed: 300,
+            count: 8,
+            backScene: 'livingRoom'
+        }, {
+            speed: 450,
+            count: 11,
+            backScene: 'bedroom1'
+        }, {
+            speed: 600,
+            count: 4,
+            backScene: 'bedroom2'
+        }]
+        this.speed = this.map[data.level - 1]?.speed; 
+        this.backScene = this.map[data.level - 1]?.backScene;
+  
 
     }
 
     preload() {}
 
     create() {
-        var background = this.add.image(game.config.width/2, game.config.height/2, "trashBG");
+        var background = this.add.image(game.config.width / 2, game.config.height/2, "trashBG");
         background.setScale(5);
 
         this.trashCount = 5;
@@ -30,13 +44,7 @@ class TrashGame extends Phaser.Scene {
             this.add.text(150, 30, "Now, the speed is faster!")
         }
 
-        const mapCount = {
-            1: 5,
-            2: 8,
-            3: 11,
-            4: 14,
-        }
-        this.trashCount = mapCount[this.level];
+        this.trashCount = this.map[this.level - 1]?.count;
         
         this.add.text(200, 125, "Use Arrow Keys to move trash can");
         this.add.text(150, 175, "Catch 5 bags of trash as fast as possible");
@@ -78,7 +86,7 @@ class TrashGame extends Phaser.Scene {
                 let y = Phaser.Math.Between(10, 20);
                 let single = this.exploadGroup.create(x, y, 'garbage');
                 single.setScale(0.05);
-                single.setVelocityY(150);
+                single.setVelocityY(this.speed);
                 this.physics.add.overlap(this.trash, single, this.pushTrash, undefined, this)
 
                 this.time.addEvent({
@@ -100,9 +108,11 @@ class TrashGame extends Phaser.Scene {
         } else if (this.cursorKeys.right.isDown) {
             this.trash.setVelocityX(gameSettings.playerSpeed * 2);
         }
-        if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
-            this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY,
-            'completion': [this.completion[0], this.completion[1], 1, this.completion[3]]});
+        if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
+            this.scene.start(this.backScene, {
+                'posX': this.lastPosX, 'posY': this.lastPosY,
+                'completion': [this.completion[0], this.completion[1], 1, this.completion[3]]
+            });
         }
     }
 
@@ -114,8 +124,10 @@ class TrashGame extends Phaser.Scene {
         single.disableBody(true, true);
         this.trashCount--;
         if (this.trashCount <= 0) {
-            this.scene.start("kitchen", { 'posX': this.lastPosX, 'posY': this.lastPosY,
-            'completion': [this.completion[0], this.completion[1], 1, this.completion[3]] });
+            this.scene.start(this.backScene, {
+                'posX': this.lastPosX, 'posY': this.lastPosY,
+                'completion': [this.completion[0], this.completion[1], 1, this.completion[3]]
+            });
         }
         // this.score += 10;
         // this.scoreText.setText('Score' + this.score)
