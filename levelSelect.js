@@ -21,7 +21,7 @@ class levelSelect extends Phaser.Scene {
                     color: '#fff'
                 }).setInteractive().on('pointerdown', function (pointer) {
                     // level => Jump to the next scene
-                    this.scene.start('livingRoom', { 'posX': 300, 'posY': 430 });
+                    this.scene.start('livingRoom', { 'posX': 300, 'posY': 430 ,'completion': [0,0,0,0]});
                 }, this);
             } else if (i === 3) {
                 this.add.text(centerX - 75, 375, "Bedroom 1", {
@@ -29,7 +29,7 @@ class levelSelect extends Phaser.Scene {
                     color: '#fff'
                 }).setInteractive().on('pointerdown', function (pointer) {
                     // level => Jump to the next scene
-                    this.scene.start('bedroom1', { 'posX': 650, 'posY': 240 });
+                    this.scene.start('bedroom1', { 'posX': 650, 'posY': 240,'completion': [0,0,0,0] });
                 }, this);
             } else if (i === 4) {
                 this.add.text(centerX - 75, 500, "Bedroom 2", {
@@ -37,7 +37,7 @@ class levelSelect extends Phaser.Scene {
                     color: '#fff'
                 }).setInteractive().on('pointerdown', function (pointer) {
                     // level => Jump to the next scene
-                    this.scene.start('bedroom2', {'posX': 120, 'posY': 250 });
+                    this.scene.start('bedroom2', {'posX': 120, 'posY': 250 ,'completion': [0,0,0,0]});
                 }, this);
             }
         }

@@ -6,6 +6,7 @@ class livingRoom extends Phaser.Scene{
   init(data){
       this.lastPosX = data.posX;
       this.lastPosY = data.posY;
+      this.completion = data.completion;
   }
 
   preload(){}
@@ -116,6 +117,32 @@ class livingRoom extends Phaser.Scene{
       this.physics.add.collider(this.walls, this.player);
 
       this.add.text(30, 570, "Use Arrow Keys to move, click on orange arrow while nearby to start minigame");
+       //load trash can 
+       var trash = this.physics.add.image(0, 0, "trash");
+       trash.setPosition(600, 340); // 400 310
+       trash.setScale(0.2);
+       trash.setImmovable(true);
+
+       // arrow icon for trash can 
+       if (this.completion[2] == 0) {
+           var trashArrow = this.add.image(0, 0, "arrow");
+           trashArrow.setPosition(600, 300);
+           // Arrow click event => enter trash pickup mini-game scene
+
+           trashArrow.setInteractive().on('pointerdown', function (pointer) {
+               // Limit the character to a certain range of the trash can to click to trigger
+               var x = this.player.body.position.x;
+               var y = this.player.body.position.y;
+               if ((x > 500 && x < 650) && (y < 400 && y > 250)) {
+                   this.scene.start("trashGame", {
+                       'posX': x + 64,
+                       'posY': y + 64,
+                       'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                       'level': 2,
+                   })
+               }
+           }, this)
+      }    
   }
 
   update(){

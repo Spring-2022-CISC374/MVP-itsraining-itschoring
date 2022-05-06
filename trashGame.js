@@ -7,6 +7,15 @@ class TrashGame extends Phaser.Scene {
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
         this.completion = data.completion;
+        this.level = data.level || 1;
+        const mapSpeed = {
+            1: 150,
+            2: 200,
+            3: 250,
+            4: 300,
+        }
+        this.speed = mapSpeed[data.level];  // Speed of garbage dropping
+
     }
 
     preload() {}
@@ -16,6 +25,18 @@ class TrashGame extends Phaser.Scene {
         background.setScale(5);
 
         this.trashCount = 5;
+        if (this.level != 1) {
+            // Acceleration Tips
+            this.add.text(150, 30, "Now, the speed is faster!")
+        }
+
+        const mapCount = {
+            1: 5,
+            2: 8,
+            3: 11,
+            4: 14,
+        }
+        this.trashCount = mapCount[this.level];
         
         this.add.text(200, 125, "Use Arrow Keys to move trash can");
         this.add.text(150, 175, "Catch 5 bags of trash as fast as possible");
@@ -58,8 +79,6 @@ class TrashGame extends Phaser.Scene {
                 let single = this.exploadGroup.create(x, y, 'garbage');
                 single.setScale(0.05);
                 single.setVelocityY(150);
-                // this.physics.add.collider(single, this.trash);  // 添加碰撞
-                // Disposal of garbage after catching
                 this.physics.add.overlap(this.trash, single, this.pushTrash, undefined, this)
 
                 this.time.addEvent({

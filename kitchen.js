@@ -69,7 +69,8 @@ class kitchen extends Phaser.Scene{
                 this.scene.start("trashGame", {
                     'posX': x + 64,
                     'posY': y + 64,
-                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                    'level': 1,
                 })
             }
         }, this)
