@@ -69,6 +69,12 @@ class livingRoom extends Phaser.Scene{
                   'posX': x + 27.8,
                   'posY': y + 44.45
               })*/
+              this.scene.start("Sflower", {
+                'posX': x + 64,
+                'posY': y + 64,
+                'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                'level': 2,
+            })
               console.log("start minigame")
           }
       }, this)

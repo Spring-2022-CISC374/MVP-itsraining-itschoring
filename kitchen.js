@@ -91,7 +91,8 @@ class kitchen extends Phaser.Scene{
                 this.scene.start("Sflower", {
                     'posX': x + 64,
                     'posY': y + 64,
-                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                    'level': 1,
                 })
             }
         }, this)
@@ -112,8 +113,10 @@ class kitchen extends Phaser.Scene{
         dishArrow.setInteractive().on('pointerdown', function (pointer) {
         if(this.player.body.position.x > 525 && this.player.body.position.y < 165){
                 // Go to dishwashing minigame
-                this.scene.start("dishWashing", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
-                'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+                this.scene.start("dishWashing", {
+                'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
+                'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
+              });
             }
         }, this);
       }
@@ -123,8 +126,10 @@ class kitchen extends Phaser.Scene{
         foodArrow.setPosition(30, 135);
         foodArrow.setInteractive().on('pointerdown', function (pointer) {
             if(this.player.body.position.x < 60 && this.player.body.position.y < 175){
-            this.scene.start("dogFeeding", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
-            'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+            this.scene.start("dogFeeding", {
+            'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
+            'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
+          });
             }
         }, this);
       }
