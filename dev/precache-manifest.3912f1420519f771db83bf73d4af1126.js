@@ -224,6 +224,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devassets/vacuumingBackground.png"
   },
   {
+    "revision": "512adf5fd56ee9394e92e3bb72cc3005",
+    "url": "/MVP-itsraining-itschoring/devassets/waterdrop.jpg"
+  },
+  {
     "revision": "1a048a1d18a8130158ff0d7934a6d4f8",
     "url": "/MVP-itsraining-itschoring/devassets/watering.png"
   },
@@ -232,11 +236,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devassets/yellowbook.png"
   },
   {
-    "revision": "e90eeb545f6660b803538768780424a6",
+    "revision": "c6332509585fa52ef74a812bcfa173dd",
     "url": "/MVP-itsraining-itschoring/devbedroom1.js"
   },
   {
-    "revision": "843247f3cde3f801623d36a336f1bfb0",
+    "revision": "40761bc33ad264381dff637ba215417c",
     "url": "/MVP-itsraining-itschoring/devbedroom2.js"
   },
   {
@@ -272,7 +276,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devindex.html"
   },
   {
-    "revision": "cd13f66e98019cac0d84fbcc413474ff",
+    "revision": "b8cf4724fbb33ae46e8e90cdcd875cae",
     "url": "/MVP-itsraining-itschoring/devkitchen.js"
   },
   {
@@ -280,15 +284,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devkitchenCompletion.js"
   },
   {
-    "revision": "f8207cf560ad94bcc60016dc95c5c3b2",
+    "revision": "66eb533bfdd6807d7dff9f8d2b16278b",
     "url": "/MVP-itsraining-itschoring/devlevelSelect.js"
   },
   {
-    "revision": "ffb71cd7a03f56dcf187314fab56566b",
+    "revision": "2c45278a42fe787572faf00e6a761111",
     "url": "/MVP-itsraining-itschoring/devlivingRoom.js"
   },
   {
-    "revision": "4b3c37b64fb7aae6ebfa75b3e4a33f46",
+    "revision": "ff4c8ee4fe78144c5158ab9b410094fe",
     "url": "/MVP-itsraining-itschoring/devmainMenu.js"
   },
   {
@@ -304,7 +308,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devphaser.min.js"
   },
   {
-    "revision": "934fec5bf74859da975bc30972b66869",
+    "revision": "d5daa4a6ef310b0efa5cd8ec25e99547",
     "url": "/MVP-itsraining-itschoring/devsFlower.js"
   },
   {
@@ -312,7 +316,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/devsw.js"
   },
   {
-    "revision": "8be2726317e40905cc67c2a0057698f6",
+    "revision": "c4fc504003f7a6ade2632b2daa008bd8",
     "url": "/MVP-itsraining-itschoring/devtrashGame.js"
   },
   {

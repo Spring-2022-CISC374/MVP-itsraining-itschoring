@@ -6,6 +6,7 @@ class bedroom1 extends Phaser.Scene{
   init(data){
       this.lastPosX = data.posX;
       this.lastPosY = data.posY;
+      this.completion = data.completion;
   }
 
   preload(){}
@@ -56,13 +57,14 @@ class bedroom1 extends Phaser.Scene{
           var x = this.player.body.position.x;
           var y = this.player.body.position.y;
           if ((x > 200 && x < 400) && (y < 220 && y > 100)) {
-            console.log("trash")
-              /*this.scene.start("trashGame", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })*/
-          }
-      }, this)
+            this.scene.start("trashGame", {
+              'posX': x + 64,
+              'posY': y + 64,
+              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+              'level': 3,
+          })
+      }
+  }, this)
 
       // watering arrow
       var clothesArrow = this.add.image(0, 0, "arrow");
@@ -80,6 +82,12 @@ class bedroom1 extends Phaser.Scene{
                   'posX': x + 27.8,
                   'posY': y + 44.45
               })*/
+              this.scene.start("Sflower", {
+                'posX': x + 64,
+                'posY': y + 64,
+                'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                'level': 3,
+            })
           }
       }, this)
 
