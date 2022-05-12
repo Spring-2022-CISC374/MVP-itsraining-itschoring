@@ -103,7 +103,7 @@ class bedroom2 extends Phaser.Scene{
             console.log("clothes");
 
             
-              this.scene.start("PackClothes", {
+              this.scene.start("PackClothes1", {
                   'posX': x + 64,
                   'posY': y + 64,
                   'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],

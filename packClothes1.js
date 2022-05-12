@@ -1,6 +1,6 @@
-class PackClothes extends Phaser.Scene {
+class PackClothes1 extends Phaser.Scene {
     constructor() {
-        super("PackClothes");
+        super("PackClothes1");
     }
 
     init(data) {
@@ -60,7 +60,7 @@ class PackClothes extends Phaser.Scene {
         const _this = this;
 
         // create clothes
-        for (let i = 2; i <= 4; i++) {
+        for (let i = 1; i <= 4; i++) {
             this['clothes' + i] = this.physics.add.sprite(80 * i, 100, "clothes" + i).setInteractive({ draggable: true });
             this['clothes' + i].setScale(0.2);
             this['clothes' + i].depth = 2;
@@ -72,7 +72,7 @@ class PackClothes extends Phaser.Scene {
                 this.y = dragY;
                 if (dragX >= 298 && dragX <= 506 && dragY >= 217 && dragY <= 489) {
                     if (dropTotal.indexOf(i) == -1) {
-                        if (dropTotal.length >= dropCount - 2) {
+                        if (dropTotal.length >= dropCount - 1) {
                             return _this.scene.start(backScene, {
                                 'posX': _this.lastPosX, 'posY': _this.lastPosY,
                                 'completion': [_this.completion[0], _this.completion[1], 1, _this.completion[3]]

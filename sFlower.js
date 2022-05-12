@@ -70,7 +70,7 @@ class Sflower extends Phaser.Scene {
             this['waterdrop' + i].on('drag', function (pointer, dragX, dragY) {
                 this.x = dragX;
                 this.y = dragY;
-                if (dragX >= 315 && dragX <= 380 && dragY >= 380 && dragY <= 470) {
+                if (dragX >= 300 && dragX <= 380 && dragY >= 380 && dragY <= 500) {
                     if (dropTotal.indexOf(i) == -1) {
                         if (dropTotal.length >= dropCount - 1) {
                             return _this.scene.start(backScene, {
