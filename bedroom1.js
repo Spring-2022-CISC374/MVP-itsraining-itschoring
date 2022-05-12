@@ -12,6 +12,13 @@ class bedroom1 extends Phaser.Scene{
   preload(){}
 
   create(){
+      console.log(this.completion[0], this.completion[1], this.completion[2], this.completion[3])
+
+      if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
+        console.log("done")
+        this.scene.start('bedroom1Completion')
+      }
+
       var background = this.add.image(0, 0, "bedroom1BG");
       background.scale = 1.67;
       background.setOrigin(0, 0);
@@ -42,76 +49,87 @@ class bedroom1 extends Phaser.Scene{
       bottom.setPosition(500, 565);
       table.setPosition(190, 200);
       //load trash can 
+
       var trash = this.physics.add.image(0, 0, "trash");
       trash.setPosition(350, 250); // 400 310
       trash.setScale(0.2);
       trash.setImmovable(true);
 
-      // arrow icon for trash can 
-      var trashArrow = this.add.image(0, 0, "arrow");
-      trashArrow.setPosition(350, 200); 
-      // Arrow click event => enter trash pickup mini-game scene
+      if(this.completion[2] == 0){
+        // arrow icon for trash can 
+        var trashArrow = this.add.image(0, 0, "arrow");
+        trashArrow.setPosition(350, 200); 
+        // Arrow click event => enter trash pickup mini-game scene
 
-      trashArrow.setInteractive().on('pointerdown', function (pointer) {
-          // Limit the character to a certain range of the trash can to click to trigger
-          var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
-          if ((x > 200 && x < 400) && (y < 220 && y > 100)) {
-            this.scene.start("trashGame", {
-              'posX': x + 64,
-              'posY': y + 64,
-              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
-              'level': 3,
-          })
-      }
-  }, this)
-
-      // watering arrow
-      var clothesArrow = this.add.image(0, 0, "arrow");
-      clothesArrow.setPosition(120, 390);
-      
-      // flower mini game
-      clothesArrow.setInteractive().on('pointerdown', function (pointer) {
-          // ppl moving area
-          var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
-        
-          if ((x < 250) && (y > 300)) {
-              console.log("clothes");
-              /*this.scene.start("Sflower", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })*/
-              this.scene.start("PackClothes", {
+        trashArrow.setInteractive().on('pointerdown', function (pointer) {
+            // Limit the character to a certain range of the trash can to click to trigger
+            var x = this.player.body.position.x;
+            var y = this.player.body.position.y;
+            if ((x > 200 && x < 400) && (y < 220 && y > 100)) {
+              this.scene.start("trashGame", {
                 'posX': x + 64,
                 'posY': y + 64,
                 'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
                 'level': 3,
-            })
+              })
           }
-      }, this)
+        }, this)
+      }
+
+      if(this.completion[3] == 0){
+        // clothes arrow
+        var clothesArrow = this.add.image(0, 0, "arrow");
+        clothesArrow.setPosition(120, 390);
+        
+        // clothes mini game
+        clothesArrow.setInteractive().on('pointerdown', function (pointer) {
+            // ppl moving area
+            var x = this.player.body.position.x;
+            var y = this.player.body.position.y;
+          
+            if ((x < 250) && (y > 300)) {
+                console.log("clothes");
+                /*this.scene.start("Sflower", {
+                    'posX': x + 27.8,
+                    'posY': y + 44.45
+                })*/
+                this.scene.start("PackClothes", {
+                  'posX': x + 64,
+                  'posY': y + 64,
+                  'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                  'level': 3,
+              })
+            }
+        }, this)
+      }
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
 
-      var bedArrow = this.add.image(0, 0, "arrow");
-      bedArrow.setPosition(670, 335);
-      bedArrow.setInteractive().on('pointerdown', function (pointer) {
-      if(this.player.body.position.x > 460 && this.player.body.position.y > 200){
-            console.log("bed")
-            this.scene.start("makeBed1", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
-        }
-      }, this);
+      if(this.completion[0] == 0){
+        var bedArrow = this.add.image(0, 0, "arrow");
+        bedArrow.setPosition(670, 335);
+        bedArrow.setInteractive().on('pointerdown', function (pointer) {
+        if(this.player.body.position.x > 460 && this.player.body.position.y > 200){
+              console.log("bed")
+              this.scene.start("makeBed1", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45,
+              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+          }
+        }, this);
+      }
       
-      var bookArrow = this.add.image(0, 0, "arrow");
-      bookArrow.setPosition(630, 490);
+      if(this.completion[1] == 0){
+        var bookArrow = this.add.image(0, 0, "arrow");
+        bookArrow.setPosition(630, 490);
 
-      bookArrow.setInteractive().on('pointerdown', function (pointer) {
-        if(this.player.body.position.x > 510 && this.player.body.position.y > 350){
-          this.scene.start("bookSortingv2", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
-        }
-      }, this);
+        bookArrow.setInteractive().on('pointerdown', function (pointer) {
+          if(this.player.body.position.x > 510 && this.player.body.position.y > 350){
+            this.scene.start("bookSortingv2", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
+            'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+          }
+        }, this);
+      }
 
       //add exit to room page - back to level page and exit
       var text_style = {

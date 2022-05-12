@@ -47,7 +47,7 @@ class TrashGame extends Phaser.Scene {
         this.trashCount = this.map[this.level - 1]?.count;
         
         this.add.text(200, 125, "Use Arrow Keys to move trash can");
-        this.add.text(150, 175, "Catch 5 bags of trash as fast as possible");
+        this.add.text(150, 175, "Catch trash until the trash can is full!");
    
         // Score
         // this.score = 5;

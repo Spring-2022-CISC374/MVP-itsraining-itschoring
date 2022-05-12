@@ -6,6 +6,7 @@ class bookSortingv2 extends Phaser.Scene{
     init(data){
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
+        this.completion = data.completion;
     }
 
     preload(){}
@@ -75,13 +76,15 @@ class bookSortingv2 extends Phaser.Scene{
             this.bookCount--;
         }
         if (this.bookCount <= 0) {
-            this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY,
+            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]});
         }
     }
 
     update(){
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
-            this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY,
+            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]});
         }
     }
 }
