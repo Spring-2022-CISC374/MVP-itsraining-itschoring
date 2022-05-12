@@ -61,7 +61,8 @@ class makeBed2 extends Phaser.Scene{
             this.time.addEvent({
                 delay: 1000,
                 repeat: 0,
-                callback: () => this.scene.start("bedroom2", {'posX': this.lastPosX, 'posY': this.lastPosY})
+                callback: () => this.scene.start("bedroom2", {'posX': this.lastPosX, 'posY': this.lastPosY,
+                'completion': [1, this.completion[1], this.completion[2], this.completion[3]]})
             });
         }
     }
