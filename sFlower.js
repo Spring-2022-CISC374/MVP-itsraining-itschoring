@@ -12,7 +12,7 @@ class Sflower extends Phaser.Scene {
             count: 3,
             backScene: 'kitchen',
         }, {
-            count: 5,
+            count: 7,
             backScene: 'livingRoom'
         }, {
             count: 7,

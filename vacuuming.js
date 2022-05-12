@@ -57,7 +57,8 @@ class vacuuming extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-            this.scene.start("livingRoom", {'posX': this.lastPosX, 'posY': this.lastPosY});
+            this.scene.start("livingRoom", {'posX': this.lastPosX, 'posY': this.lastPosY,
+            'completion': [1, this.completion[1], this.completion[2], this.completion[3]]});
         }
 
         // if (Math.abs(this.dirt1.x - this.vacuum.x) < 40 && Math.abs(this.dirt1.y - this.vacuum.y) < 40) {
@@ -84,7 +85,8 @@ class vacuuming extends Phaser.Scene {
             this.time.addEvent({
                 delay: 1000,
                 repeat: 0,
-                callback: () => this.scene.start("livingRoom", {'posX': this.lastPosX, 'posY': this.lastPosY})
+                callback: () => this.scene.start("livingRoom", {'posX': this.lastPosX, 'posY': this.lastPosY,
+                'completion': [1, this.completion[1], this.completion[2], this.completion[3]]})
             });
         }
     }
