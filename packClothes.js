@@ -62,7 +62,7 @@ class PackClothes extends Phaser.Scene {
         // create clothes
         for (let i = 1; i <= 4; i++) {
             this['clothes' + i] = this.physics.add.sprite(80 * i, 100, "clothes" + i).setInteractive({ draggable: true });
-            this['clothes' + i].setScale(0.4);
+            this['clothes' + i].setScale(0.2);
             this['clothes' + i].depth = 2;
             this['clothes' + i].setDrag(100, 50)
 
