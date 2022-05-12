@@ -37,7 +37,7 @@ class levelSelect extends Phaser.Scene {
                     color: '#fff'
                 }).setInteractive().on('pointerdown', function (pointer) {
                     // level => Jump to the next scene
-                    this.scene.start('bedroom2', {'posX': 120, 'posY': 250 ,'completion': [0,0,0,0]});
+                    this.scene.start('bedroom2', {'posX': 120, 'posY': 250 ,'completion': [0,0,0,1]});
                 }, this);
             }
         }

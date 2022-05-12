@@ -12,6 +12,13 @@ class bedroom2 extends Phaser.Scene{
   preload(){}
 
   create(){
+      console.log(this.completion[0], this.completion[1], this.completion[2], this.completion[3])
+
+      if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
+        console.log("done")
+        this.scene.start('bedroom2Completion')
+      }
+
       var background = this.add.image(0, 0, "bedroom2BG");
       background.scale = 1.67;
       background.setOrigin(0, 0);
@@ -41,78 +48,78 @@ class bedroom2 extends Phaser.Scene{
       right.setPosition(30, 200);
       bottom.setPosition(500, 565);
       table.setPosition(150, 350);
-      //load trash can 
-      var trash = this.physics.add.image(0, 0, "trash");
-      trash.setPosition(450, 250); // 400 310
-      trash.setScale(0.2);
-      trash.setImmovable(true);
 
-      // arrow icon for trash can 
-      var trashArrow = this.add.image(0, 0, "arrow");
-      trashArrow.setPosition(450, 200);
-      // Arrow click event => enter trash pickup mini-game scene
+      if(this.completion[2] == 0){
+        //load trash can 
+        var trash = this.physics.add.image(0, 0, "trash");
+        trash.setPosition(450, 250); // 400 310
+        trash.setScale(0.2);
+        trash.setImmovable(true);
 
-      trashArrow.setInteractive().on('pointerdown', function (pointer) {
-          // Limit the character to a certain range of the trash can to click to trigger
-          var x = this.player.body.position.x;
+        // arrow icon for trash can 
+        var trashArrow = this.add.image(0, 0, "arrow");
+        trashArrow.setPosition(450, 200);
+        // Arrow click event => enter trash pickup mini-game scene
+
+        trashArrow.setInteractive().on('pointerdown', function (pointer) {
+            // Limit the character to a certain range of the trash can to click to trigger
+            var x = this.player.body.position.x;
+              var y = this.player.body.position.y;
+              if ((x > 310 && x < 440) && (y < 250)) {
+                  this.scene.start("trashGame", {
+                      'posX': x + 64,
+                      'posY': y + 64,
+                      'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                      'level': 4,
+                  })
+              }
+          }, this)
+      }
+
+      if(this.completion[0] == 0){
+        var bedArrow = this.add.image(0, 0, "arrow");
+        bedArrow.setPosition(150, 330);
+        
+        // bed mini game
+        bedArrow.setInteractive().on('pointerdown', function (pointer) {
+            // ppl moving area
+            var x = this.player.body.position.x;
             var y = this.player.body.position.y;
-            if ((x > 310 && x < 440) && (y < 250)) {
-                this.scene.start("trashGame", {
-                    'posX': x + 64,
-                    'posY': y + 64,
-                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
-                    'level': 4,
+          
+            if ((x < 230) && (y < 420 && y > 200)) {
+                console.log("bed")
+                this.scene.start("makeBed2", {
+                    'posX': x + 27.8,
+                    'posY': y + 44.45,
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
                 })
             }
         }, this)
-
-      var bedArrow = this.add.image(0, 0, "arrow");
-      bedArrow.setPosition(150, 330);
-      
-      // bed mini game
-      bedArrow.setInteractive().on('pointerdown', function (pointer) {
-          // ppl moving area
-          var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
-        
-          if ((x < 230) && (y < 420 && y > 200)) {
-              console.log("bed")
-              this.scene.start("makeBed2", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })
-              /*this.scene.start("Sflower", {
-                'posX': x + 64,
-                'posY': y + 64,
-                'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
-                'level': 4,
-            })*/
-          }
-      }, this)
+      }
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
 
-      var clothesArrow = this.add.image(0, 0, "arrow");
-      clothesArrow.setPosition(670, 390);
-      clothesArrow.setInteractive().on('pointerdown', function (pointer) {
-        var x = this.player.body.position.x;
-        var y = this.player.body.position.y;
-      if(this.player.body.position.x > 450 && this.player.body.position.y > 300){
-            console.log("clothes");
+      if(this.completion[1] == 0){
+        var clothesArrow = this.add.image(0, 0, "arrow");
+        clothesArrow.setPosition(670, 390);
+        clothesArrow.setInteractive().on('pointerdown', function (pointer) {
+          var x = this.player.body.position.x;
+          var y = this.player.body.position.y;
+        if(this.player.body.position.x > 450 && this.player.body.position.y > 300){
+              console.log("clothes");
 
-            
-              this.scene.start("PackClothes1", {
-                  'posX': x + 64,
-                  'posY': y + 64,
-                  'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
-                  'level': 4,
-              })
-            //this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
-        }
-      }, this);
-      
+              
+                this.scene.start("PackClothes1", {
+                    'posX': x + 64,
+                    'posY': y + 64,
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                    'level': 4,
+                })
+          }
+        }, this);
+      }
 
       //add exit to room page - back to level page and exit
       var text_style = {
