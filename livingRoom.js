@@ -12,6 +12,13 @@ class livingRoom extends Phaser.Scene{
   preload(){}
   
   create(){
+      console.log(this.completion[0], this.completion[1], this.completion[2], this.completion[3])
+
+      if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
+        console.log("done")
+        this.scene.start('livingRoomCompletion')
+      }
+
       var background = this.add.image(0, 0, "livingRoomBG");
       background.scale = 1.52;
       background.setOrigin(0, 0);
@@ -83,22 +90,29 @@ class livingRoom extends Phaser.Scene{
       this.player.setCollideWorldBounds(true);
       this.cursorKeys = this.input.keyboard.createCursorKeys();
 
-      var bookArrow = this.add.image(0, 0, "arrow");
-      bookArrow.setPosition(622, 70);
-      bookArrow.setInteractive().on('pointerdown', function (pointer) {
-      if(this.player.body.position.x > 525 && this.player.body.position.y < 165 && this.player.body.position.x < 660){
-            this.scene.start("bookSorting", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
-        }
-      }, this);
-      
-      var carpetArrow = this.add.image(0, 0, "arrow");
-      carpetArrow.setPosition(390, 250);
-      carpetArrow.setInteractive().on('pointerdown', function (pointer) {
-        if(this.player.body.position.x > 270 && this.player.body.position.x < 450 && this.player.body.position.y < 230 && this.player.body.position.y > 150){
-            this.scene.start("vacuuming", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64});
-        }
-      }, this);
+      if(this.completion[1] == 0){
+        var bookArrow = this.add.image(0, 0, "arrow");
+        bookArrow.setPosition(622, 70);
+        bookArrow.setInteractive().on('pointerdown', function (pointer) {
+        if(this.player.body.position.x > 525 && this.player.body.position.y < 165 && this.player.body.position.x < 660){
+              this.scene.start("bookSorting", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
+              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+          }
+        }, this);
+      }
 
+      if(this.completion[0] == 0){
+
+        var carpetArrow = this.add.image(0, 0, "arrow");
+        carpetArrow.setPosition(390, 250);
+        carpetArrow.setInteractive().on('pointerdown', function (pointer) {
+          if(this.player.body.position.x > 270 && this.player.body.position.x < 450 && this.player.body.position.y < 230 && this.player.body.position.y > 150){
+              this.scene.start("vacuuming", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
+              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+          }
+        }, this);
+
+      }
       //add exit to room page - back to level page and exit
       var text_style = {
           font: 'bold 32px Arial',
@@ -139,7 +153,7 @@ class livingRoom extends Phaser.Scene{
                // Limit the character to a certain range of the trash can to click to trigger
                var x = this.player.body.position.x;
                var y = this.player.body.position.y;
-               if ((x > 500 && x < 650) && (y < 400 && y > 250)) {
+               if ((x > 450 && x < 650) && (y < 400 && y > 200)) {
                    this.scene.start("trashGame", {
                        'posX': x + 64,
                        'posY': y + 64,
