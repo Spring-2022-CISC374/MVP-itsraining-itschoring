@@ -97,8 +97,18 @@ class bedroom2 extends Phaser.Scene{
       var clothesArrow = this.add.image(0, 0, "arrow");
       clothesArrow.setPosition(670, 390);
       clothesArrow.setInteractive().on('pointerdown', function (pointer) {
+        var x = this.player.body.position.x;
+        var y = this.player.body.position.y;
       if(this.player.body.position.x > 450 && this.player.body.position.y > 300){
             console.log("clothes");
+
+            
+              this.scene.start("PackClothes", {
+                  'posX': x + 64,
+                  'posY': y + 64,
+                  'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                  'level': 4,
+              })
             //this.scene.start("dishWashing", {'posX': this.player.body.position.x + 27.8, 'posY': this.player.body.position.y + 44.45});
         }
       }, this);
