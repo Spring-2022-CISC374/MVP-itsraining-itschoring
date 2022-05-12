@@ -75,7 +75,7 @@ class PackClothes extends Phaser.Scene {
                         if (dropTotal.length >= dropCount - 2) {
                             return _this.scene.start(backScene, {
                                 'posX': _this.lastPosX, 'posY': _this.lastPosY,
-                                'completion': [_this.completion[0], _this.completion[1], 1, _this.completion[3]]
+                                'completion': [_this.completion[0], _this.completion[1], _this.completion[2], 1]
                             });
                         }
                         dropTotal.push(i)

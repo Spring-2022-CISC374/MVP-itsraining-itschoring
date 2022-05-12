@@ -61,30 +61,32 @@ class livingRoom extends Phaser.Scene{
       chairBarrierL.setPosition(245, 220);
       chairBarrierR.setPosition(535, 220);
 
-      // watering arrow
-      var flowerArrow = this.add.image(0, 0, "arrow");
-      flowerArrow.setPosition(42, 330);
-      
-      // flower mini game
-      flowerArrow.setInteractive().on('pointerdown', function (pointer) {
-          // ppl moving area
-          var x = this.player.body.position.x;
-          var y = this.player.body.position.y;
+      if(this.completion[3] == 0){
+        // watering arrow
+        var flowerArrow = this.add.image(0, 0, "arrow");
+        flowerArrow.setPosition(42, 330);
         
-          if ((x < 100) && (y < 450 && y > 250)) {
-              /*this.scene.start("Sflower", {
-                  'posX': x + 27.8,
-                  'posY': y + 44.45
-              })*/
-              this.scene.start("Sflower", {
-                'posX': x + 64,
-                'posY': y + 64,
-                'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
-                'level': 2,
-            })
-              console.log("start minigame")
-          }
-      }, this)
+        // flower mini game
+        flowerArrow.setInteractive().on('pointerdown', function (pointer) {
+            // ppl moving area
+            var x = this.player.body.position.x;
+            var y = this.player.body.position.y;
+          
+            if ((x < 100) && (y < 450 && y > 250)) {
+                /*this.scene.start("Sflower", {
+                    'posX': x + 27.8,
+                    'posY': y + 44.45
+                })*/
+                this.scene.start("Sflower", {
+                  'posX': x + 64,
+                  'posY': y + 64,
+                  'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                  'level': 2,
+              })
+                console.log("start minigame")
+            }
+        }, this)
+      }
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
       this.player.setCollideWorldBounds(true);
