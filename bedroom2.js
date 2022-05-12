@@ -77,16 +77,16 @@ class bedroom2 extends Phaser.Scene{
         
           if ((x < 230) && (y < 420 && y > 200)) {
               console.log("bed")
-              /*this.scene.start("Sflower", {
+              this.scene.start("makeBed2", {
                   'posX': x + 27.8,
                   'posY': y + 44.45
-              })*/
-              this.scene.start("Sflower", {
+              })
+              /*this.scene.start("Sflower", {
                 'posX': x + 64,
                 'posY': y + 64,
                 'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
                 'level': 4,
-            })
+            })*/
           }
       }, this)
 
