@@ -7,11 +7,19 @@ class vacuuming extends Phaser.Scene {
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
         this.completion = data.completion;
+        this.playtime = data.playtime || 0;
     }
 
     preload() {}
 
     create() {
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
         var background = this.add.image(game.config.width/2, game.config.height/2, "vacuumingBG");
         background.setScale(5.2);
 
@@ -58,7 +66,9 @@ class vacuuming extends Phaser.Scene {
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
             this.scene.start("livingRoom", {'posX': this.lastPosX, 'posY': this.lastPosY,
-            'completion': [1, this.completion[1], this.completion[2], this.completion[3]]});
+            'completion': [1, this.completion[1], this.completion[2], this.completion[3]],
+            'playtime': this.playtime
+         });
         }
 
         // if (Math.abs(this.dirt1.x - this.vacuum.x) < 40 && Math.abs(this.dirt1.y - this.vacuum.y) < 40) {
@@ -86,7 +96,9 @@ class vacuuming extends Phaser.Scene {
                 delay: 1000,
                 repeat: 0,
                 callback: () => this.scene.start("livingRoom", {'posX': this.lastPosX, 'posY': this.lastPosY,
-                'completion': [1, this.completion[1], this.completion[2], this.completion[3]]})
+                'completion': [1, this.completion[1], this.completion[2], this.completion[3]],
+                'playtime': this.playtime
+               })
             });
         }
     }

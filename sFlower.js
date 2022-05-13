@@ -8,6 +8,7 @@ class Sflower extends Phaser.Scene {
         this.lastPosY = data.posY;
         this.completion = data.completion;
         this.level = data.level || 1;
+        this.playtime = data.playtime || 0;
         this.map = [{
             count: 3,
             backScene: 'kitchen',
@@ -34,7 +35,13 @@ class Sflower extends Phaser.Scene {
         // var centerX = this.physics.world.bounds.centerX;
         // var text_title1 = this.add.text(centerX - 100, 150, "Click on the kettle!!!", text_style);
 
-        
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
 
         // initial grow of flower
         this.flower_time = 0;  // grow time
@@ -75,7 +82,8 @@ class Sflower extends Phaser.Scene {
                         if (dropTotal.length >= dropCount - 1) {
                             return _this.scene.start(backScene, {
                                 'posX': _this.lastPosX, 'posY': _this.lastPosY,
-                                'completion': [_this.completion[0], _this.completion[1], _this.completion[2], 1]
+                                'completion': [_this.completion[0], _this.completion[1], _this.completion[2], 1],
+                                'playtime': _this.playtime
                             });
                         }
                         dropTotal.push(i)
@@ -122,7 +130,11 @@ class Sflower extends Phaser.Scene {
         var text_title1 = this.add.text(430, 480, "Exit", text_style);
         text_title1.setInteractive();
         text_title1.on('pointerdown', function (pointer) {
-            this.scene.start('kitchen')
+            this.scene.start('kitchen', {
+                'posX': this.lastPosX, 'posY': this.lastPosY,
+                'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
+                'playtime': this.playtime
+            })
         }, this);
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -136,7 +148,8 @@ class Sflower extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
             this.scene.start("kitchen", {
                 'posX': this.lastPosX, 'posY': this.lastPosY,
-                'completion': [this.completion[0], this.completion[1], this.completion[2], 1]
+                'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
+                'playtime': this.playtime
             });
         }
 
@@ -153,7 +166,8 @@ class Sflower extends Phaser.Scene {
                 callback: () => {
                     this.scene.start("kitchen", {
                         'posX': this.lastPosX, 'posY': this.lastPosY,
-                        'completion': [this.completion[0], this.completion[1], this.completion[2], 1]
+                        'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
+                        'playtime': this.playtime
                     });
                 }
             })

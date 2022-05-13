@@ -7,11 +7,19 @@ class dishWashing extends Phaser.Scene{
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
         this.completion = data.completion;
+        this.playtime = data.playtime || 0;
     }
 
     preload(){}
     
     create(){
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
         var background = this.add.image(game.config.width/2, game.config.height/2, "dishWashingBG");
         background.setScale(5.3);
         this.plateCount = 3;
@@ -52,7 +60,9 @@ class dishWashing extends Phaser.Scene{
         }
         if (this.plateCount <= 0) {
             this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY, 
-            'completion': [1, this.completion[1], this.completion[2], this.completion[3]]});
+            'completion': [1, this.completion[1], this.completion[2], this.completion[3]],
+            'playtime': this.playtime
+        });
         }
     }
 
@@ -60,7 +70,9 @@ class dishWashing extends Phaser.Scene{
         // Switches back to kitchen level, passing back the x and y position of the player.
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
             this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY, 
-            'completion': [1, this.completion[1], this.completion[2], this.completion[3]]});
+            'completion': [1, this.completion[1], this.completion[2], this.completion[3]],
+            'playtime': this.playtime
+        });
 
         }
     }

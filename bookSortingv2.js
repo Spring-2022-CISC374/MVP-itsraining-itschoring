@@ -7,11 +7,19 @@ class bookSortingv2 extends Phaser.Scene{
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
         this.completion = data.completion;
+        this.playtime = data.playtime || 0;
     }
 
     preload(){}
     
     create(){
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
         var background = this.add.image(game.config.width/2, game.config.height/2, "bookSortingv2BG");
         background.setScale(5.2);
 
@@ -77,14 +85,19 @@ class bookSortingv2 extends Phaser.Scene{
         }
         if (this.bookCount <= 0) {
             this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY,
-            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]});
+            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]],
+            'playtime': this.playtime
+        });
         }
     }
 
     update(){
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
             this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY,
-            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]});
+            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]],
+            'playtime': this.playtime
+        });
+            
         }
     }
 }

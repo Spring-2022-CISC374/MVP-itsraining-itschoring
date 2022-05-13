@@ -11,11 +11,19 @@ class makeBed1 extends Phaser.Scene{
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
         this.completion = data.completion;
+        this.playtime = data.playtime || 0;
     }
 
     preload(){}
     
     create(){
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
         var background = this.add.image(0,0, "bed1V1");
         background.scale = 1.67;
         background.setOrigin(0, 0);
@@ -58,7 +66,9 @@ class makeBed1 extends Phaser.Scene{
                 delay: 1000,
                 repeat: 0,
                 callback: () => this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY,
-                'completion': [1, this.completion[1], this.completion[2], this.completion[3]]})
+                'completion': [1, this.completion[1], this.completion[2], this.completion[3]],
+                'playtime': this.playtime  
+              })
             });
         }
     }
@@ -67,7 +77,11 @@ class makeBed1 extends Phaser.Scene{
         // Switches back to kitchen level, passing back the x and y position of the player.
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
             this.scene.start("bedroom1", {'posX': this.lastPosX, 'posY': this.lastPosY, 
-            'completion': [1, this.completion[1], this.completion[2], this.completion[3]]});
+            'completion': [1, this.completion[1], this.completion[2], this.completion[3]],
+            'playtime': this.playtime
+            
+        
+        });
 
         }
         if(SecondSet){

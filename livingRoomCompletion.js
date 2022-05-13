@@ -2,6 +2,11 @@ class livingRoomCompletion extends Phaser.Scene {
     constructor () {
         super('livingRoomCompletion');
     }
+    
+    init(data) {
+        this.playtime = data.playtime || 0;
+    }
+
 
     preload () {}
 
@@ -14,7 +19,10 @@ class livingRoomCompletion extends Phaser.Scene {
 
         var text_title1 = this.add.text(centerX - 150, 150, "Living Room Complete", text_style);
         var text_title2 = this.add.text(centerX - 150, 250, "Score : placeholdder", text_style);
-
+        var text_title3 = this.add.text(
+            centerX - 150, 350,
+            `You used a total of${this.playtime}time,Congratulations on the completion of all tasks,please go to next level`,
+        )
         var text_start = this.add.text(300, 600, 'Level Select', text_style);
         text_start.setInteractive();
         text_start.on('pointerdown', function (pointer) {

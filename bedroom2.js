@@ -7,6 +7,7 @@ class bedroom2 extends Phaser.Scene{
       this.lastPosX = data.posX;
       this.lastPosY = data.posY;
       this.completion = data.completion;
+      this.playtime = data.playtime || 0;
   }
 
   preload(){}
@@ -16,7 +17,9 @@ class bedroom2 extends Phaser.Scene{
 
       if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
         console.log("done")
-        this.scene.start('bedroom2Completion')
+        this.scene.start('bedroom2Completion',{
+          'playtime': this.playtime
+        })
       }
 
       var background = this.add.image(0, 0, "bedroom2BG");
@@ -71,9 +74,16 @@ class bedroom2 extends Phaser.Scene{
                       'posY': y + 64,
                       'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
                       'level': 4,
+                      'playtime': this.playtime
+                      
                   })
               }
           }, this)
+      }else {
+        // finsih 
+        var trashFinish = this.add.image(0, 0, "green");
+        trashFinish.setPosition(450, 200);
+        trashFinish.setScale(0.06);
       }
 
       if(this.completion[0] == 0){
@@ -91,10 +101,16 @@ class bedroom2 extends Phaser.Scene{
                 this.scene.start("makeBed2", {
                     'posX': x + 27.8,
                     'posY': y + 44.45,
-                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]
+                    'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+                    'playtime': this.playtime
                 })
             }
         }, this)
+      }else {
+        // finish
+        var bedFinish = this.add.image(0, 0, "green");
+        bedFinish.setPosition(150, 330);
+        bedFinish.setScale(0.06);
       }
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
@@ -116,9 +132,15 @@ class bedroom2 extends Phaser.Scene{
                     'posY': y + 64,
                     'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
                     'level': 4,
+                    'playtime': this.playtime
                 })
           }
         }, this);
+      }else {
+        // finsih
+        var clothesFinish = this.add.image(0, 0, "green");
+        clothesFinish.setPosition(670, 390);
+        clothesFinish.setScale(0.06);
       }
 
       //add exit to room page - back to level page and exit
@@ -126,6 +148,22 @@ class bedroom2 extends Phaser.Scene{
           font: 'bold 32px Arial',
           color: '#fff'
       }
+      var text_time = this.add.text(100, 600, `Time: ${this.playtime}`, text_style);
+      this.time.addEvent({
+        delay: 1000,
+        loop: true,
+        callback: () => {
+          text_time.setText(`Time: ${++this.playtime}`)
+        }
+      })
+      
+      var text_reset = this.add.text(120, 640, 'Reset', text_style);
+      text_reset.setInteractive();
+      text_reset.on('pointerdown', function (pointer) {
+        this.scene.start('bedroom2', { 'posX': 120, 'posY': 250, 'completion': [0,0,0,1] });
+      }, this);
+
+
       var centerX = this.physics.world.bounds.centerX;
       var text_exit = this.add.text(300, 600, 'Back to level', text_style);
       text_exit.setInteractive();

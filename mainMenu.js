@@ -11,6 +11,7 @@ class mainMenu extends Phaser.Scene {
       this.load.image("bedroom1BG","assets/bedroom1default.jpg");
       this.load.image("bedroom2BG", "assets/bedroom2.png");
       this.load.image("arrow", "assets/arrow.png");
+      this.load.image("green", "assets/green.jpg");
       this.load.spritesheet("player", "assets/spritesheets/charStill.png",{
         frameWidth: 128,
         frameHeight: 128

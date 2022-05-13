@@ -8,6 +8,7 @@ class PackClothes1 extends Phaser.Scene {
         this.lastPosY = data.posY;
         this.completion = data.completion;
         this.level = data.level || 3;
+        this.playtime = data.playtime || 0;
         this.map = [{
             count: 1,
             backScene: 'kitchen',
@@ -33,7 +34,13 @@ class PackClothes1 extends Phaser.Scene {
     }
 
     create() {
-
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
         // initial grow of flower
         this.flower_time = 0;  // grow time
         // time
@@ -75,7 +82,8 @@ class PackClothes1 extends Phaser.Scene {
                         if (dropTotal.length >= dropCount - 1) {
                             return _this.scene.start(backScene, {
                                 'posX': _this.lastPosX, 'posY': _this.lastPosY,
-                                'completion': [_this.completion[0], 1, _this.completion[2], _this.completion[3]]
+                                'completion': [_this.completion[0], 1, _this.completion[2], _this.completion[3]],
+                                'playtime': _this.playtime
                             });
                         }
                         dropTotal.push(i)
@@ -97,7 +105,11 @@ class PackClothes1 extends Phaser.Scene {
         var text_title1 = this.add.text(530, 580, "Exit", text_style);
         text_title1.setInteractive();
         text_title1.on('pointerdown', function (pointer) {
-            this.scene.start(backScene)
+            this.scene.start(backScene, {
+                'posX': this.lastPosX, 'posY': this.lastPosY,
+                'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
+                'playtime': this.playtime
+            })
         }, this);
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -111,7 +123,8 @@ class PackClothes1 extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
             this.scene.start("kitchen", {
                 'posX': this.lastPosX, 'posY': this.lastPosY,
-                'completion': [this.completion[0], this.completion[1], this.completion[2], 1]
+                'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
+                'playtime': this.playtime
             });
         }
 

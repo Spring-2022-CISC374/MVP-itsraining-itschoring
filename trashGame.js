@@ -8,6 +8,7 @@ class TrashGame extends Phaser.Scene {
         this.lastPosY = data.posY;
         this.completion = data.completion;
         this.level = data.level || 1;
+        this.playtime = data.playtime || 0;
         // Speed of garbage dropping
         this.map = [{
             speed: 150,
@@ -28,13 +29,18 @@ class TrashGame extends Phaser.Scene {
         }]
         this.speed = this.map[data.level - 1]?.speed; 
         this.backScene = this.map[data.level - 1]?.backScene;
-  
-
     }
 
     preload() {}
 
     create() {
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
         var background = this.add.image(game.config.width / 2, game.config.height/2, "trashBG");
         background.setScale(5);
 
@@ -111,7 +117,8 @@ class TrashGame extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
             this.scene.start(this.backScene, {
                 'posX': this.lastPosX, 'posY': this.lastPosY,
-                'completion': [this.completion[0], this.completion[1], 1, this.completion[3]]
+                'completion': [this.completion[0], this.completion[1], 1, this.completion[3]],
+                'playtime': this.playtime
             });
         }
     }
@@ -126,7 +133,8 @@ class TrashGame extends Phaser.Scene {
         if (this.trashCount <= 0) {
             this.scene.start(this.backScene, {
                 'posX': this.lastPosX, 'posY': this.lastPosY,
-                'completion': [this.completion[0], this.completion[1], 1, this.completion[3]]
+                'completion': [this.completion[0], this.completion[1], 1, this.completion[3]],
+                'playtime': this.playtime
             });
         }
         // this.score += 10;

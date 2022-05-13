@@ -7,6 +7,7 @@ class livingRoom extends Phaser.Scene{
       this.lastPosX = data.posX;
       this.lastPosY = data.posY;
       this.completion = data.completion;
+      this.playtime = data.playtime || 0;
   }
 
   preload(){}
@@ -15,8 +16,10 @@ class livingRoom extends Phaser.Scene{
       console.log(this.completion[0], this.completion[1], this.completion[2], this.completion[3])
 
       if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
-        console.log("done")
-        this.scene.start('livingRoomCompletion')
+       // console.log("done")
+        this.scene.start('livingRoomCompletion',{
+          'playtime': this.playtime
+        })
       }
 
       var background = this.add.image(0, 0, "livingRoomBG");
@@ -82,11 +85,18 @@ class livingRoom extends Phaser.Scene{
                   'posY': y + 64,
                   'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
                   'level': 2,
+                  'playtime': this.playtime
               })
-                console.log("start minigame")
+               // console.log("start minigame")
             }
         }, this)
+      }else {
+        // finsih flowering 
+        var flowerFinish = this.add.image(0, 0, "green");
+        flowerFinish.setPosition(42, 330);
+        flowerFinish.setScale(0.06);
       }
+
 
       this.player = this.physics.add.sprite(this.lastPosX, this.lastPosY, "player");
       this.player.setCollideWorldBounds(true);
@@ -98,9 +108,17 @@ class livingRoom extends Phaser.Scene{
         bookArrow.setInteractive().on('pointerdown', function (pointer) {
         if(this.player.body.position.x > 525 && this.player.body.position.y < 165 && this.player.body.position.x < 660){
               this.scene.start("bookSorting", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
-              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+              'playtime': this.playtime,
+            
+            });
           }
         }, this);
+      }else {
+        // finish sorting 
+        var bookFinish = this.add.image(0, 0, "green");
+        bookFinish.setPosition(622, 70);
+        bookFinish.setScale(0.06);
       }
 
       if(this.completion[0] == 0){
@@ -110,9 +128,16 @@ class livingRoom extends Phaser.Scene{
         carpetArrow.setInteractive().on('pointerdown', function (pointer) {
           if(this.player.body.position.x > 270 && this.player.body.position.x < 450 && this.player.body.position.y < 230 && this.player.body.position.y > 150){
               this.scene.start("vacuuming", {'posX': this.player.body.position.x + 64, 'posY': this.player.body.position.y + 64,
-              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]]});
+              'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
+              'playtime': this.playtime,
+            });
           }
         }, this);
+      }else {
+        // finsih 
+        var carpetFinish = this.add.image(0, 0, "green");
+        carpetFinish.setPosition(390, 250);
+        carpetFinish.setScale(0.06);
 
       }
       //add exit to room page - back to level page and exit
@@ -120,7 +145,24 @@ class livingRoom extends Phaser.Scene{
           font: 'bold 32px Arial',
           color: '#fff'
       }
-      var centerX = this.physics.world.bounds.centerX;
+
+      var text_time = this.add.text(100, 600, `Time: ${this.playtime}`, text_style);
+      this.time.addEvent({
+        delay: 1000,
+        loop: true,
+        callback: () => {
+          text_time.setText(`Time: ${++this.playtime}`)
+        }
+      })
+
+      var text_reset = this.add.text(120, 640, 'Reset', text_style);
+      text_reset.setInteractive();
+      text_reset.on('pointerdown', function (pointer) {
+        this.scene.start('livingRoom', { 'posX': 300, 'posY': 430, 'completion': [0,0,0,0] });
+      }, this);
+
+
+      //var centerX = this.physics.world.bounds.centerX;
       var text_exit = this.add.text(300, 600, 'Back to level', text_style);
       text_exit.setInteractive();
       text_exit.on('pointerdown', function (pointer) {
@@ -161,10 +203,16 @@ class livingRoom extends Phaser.Scene{
                        'posY': y + 64,
                        'completion': [this.completion[0], this.completion[1], this.completion[2], this.completion[3]],
                        'level': 2,
+                       'playtime': this.playtime,
                    })
                }
            }, this)
-      }    
+      } else {
+        // finsih 
+        var trashFinish = this.add.image(0, 0, "green");
+        trashFinish.setPosition(600, 300);
+        trashFinish.setScale(0.06);
+      }   
   }
 
   update(){

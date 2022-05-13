@@ -7,11 +7,19 @@ class dogFeeding extends Phaser.Scene {
         this.lastPosX = data.posX;
         this.lastPosY = data.posY;
         this.completion = data.completion;
+        this.playtime = data.playtime || 0;
     }
 
     preload() {}
 
     create() {
+        this.time.addEvent({
+            delay: 1000,
+            loop: true,
+            callback: () => {
+                this.playtime++
+            }
+        })
         var background = this.add.image(game.config.width/2, game.config.height/2, "dogFeedingBG");
         background.setScale(5.2);
         this.foodFunnel = this.physics.add.image(0, 0, "foodfunnel");
@@ -38,7 +46,10 @@ class dogFeeding extends Phaser.Scene {
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
             this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY, 
-            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]});
+            'completion': [this.completion[0], 1, this.completion[2], this.completion[3]],
+            'playtime': this.playtime
+        
+        });
         }
         if (Phaser.Input.Keyboard.JustDown(this.down)) {
             var food = this.foodGroup.create(this.foodFunnel.x, this.foodFunnel.y + 80, "food");
@@ -49,6 +60,8 @@ class dogFeeding extends Phaser.Scene {
 
     exitGameManager() {
         this.scene.start("kitchen", {'posX': this.lastPosX, 'posY': this.lastPosY, 
-        'completion': [this.completion[0], 1, this.completion[2], this.completion[3]]}); 
+        'completion': [this.completion[0], 1, this.completion[2], this.completion[3]],
+        'playtime': this.playtime
+    }); 
     }
 }
