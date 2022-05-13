@@ -20,7 +20,7 @@ class bedroom1Completion extends Phaser.Scene {
         var text_title2 = this.add.text(centerX - 150, 250, "Score : placeholdder", text_style);
         var text_title3 = this.add.text(
             centerX - 150, 350,
-            `You used a total of${this.playtime}time,Congratulations on the completion of all tasks,please go to next level`,
+            `You used a total of ${this.playtime} Seconds ,Congratulations !`,
         )
         var text_start = this.add.text(300, 600, 'Level Select', text_style);
         text_start.setInteractive();
