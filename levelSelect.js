@@ -2,9 +2,13 @@ class levelSelect extends Phaser.Scene {
     constructor() {
         super('levelSelect')
     }
+    preload(){
+        this.load.audio("music0", "assets/music1.mp3");
+    }
 
     create() {
         var centerX = this.physics.world.bounds.centerX;
+
 
         for (let i = 1; i <= 4; i++) {
             if (i === 1) {
@@ -62,6 +66,10 @@ class levelSelect extends Phaser.Scene {
         var centerX = this.physics.world.bounds.centerX;
         var text_exit = this.add.text(600, 700, 'Exit', text_style);
         text_exit.setInteractive();
+
+        let playmusic = this.sound.add("music0");
+            playmusic.loop = true;
+            playmusic.play();
 
     }
 }

@@ -96,9 +96,18 @@ class mainMenu extends Phaser.Scene {
       this.load.image("clothes3", "assets/clothes3.png");
       this.load.image("clothes4", "assets/clothes4.png");
       this.load.image("closet", "assets/Closet.jpg");
+
+      
+      this.load.audio("music", "assets/rain.mp3");
     }
 
     create () {
+            //sound test
+            let playmusic = this.sound.add("music");
+            playmusic.loop = true;
+            playmusic.play();
+
+
         var background = this.add.image(game.config.width/2, game.config.height/2, "titleBG");
         background.setScale(0.7);
 

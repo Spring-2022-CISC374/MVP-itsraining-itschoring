@@ -155,6 +155,9 @@ class bedroom1 extends Phaser.Scene{
       this.physics.add.collider(this.walls, this.player);
 
       this.add.text(30, 570, "Use Arrow Keys to move, click on orange arrow while nearby to start minigame");
+
+
+
   }
 
   update(){
