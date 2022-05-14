@@ -368,7 +368,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MVP-itsraining-itschoring/finallivingRoomCompletion.js"
   },
   {
-    "revision": "912bf9ceaa546ef09a929647530b9ccc",
+    "revision": "9d9e6d69a635408df7e9ba2a207992a8",
     "url": "/MVP-itsraining-itschoring/finalmainMenu.js"
   },
   {

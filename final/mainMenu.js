@@ -110,12 +110,12 @@ class mainMenu extends Phaser.Scene {
     create () {
             this.sound.stopAll();
             //sound test
-            this.playsound = this.sound.add("music");
+            this.playsound = this.sound.add("music", {volume: 0.3});
             this.playsound.loop = true;
             if(!this.playsound.isPlaying) {
               this.playsound.play();
             }
-            this.playmusic = this.sound.add("music0");
+            this.playmusic = this.sound.add("music0", {volume: 0.3});
             this.playmusic.loop = true;
             if(!this.playmusic.isPlaying) {
                 this.playmusic.play();
