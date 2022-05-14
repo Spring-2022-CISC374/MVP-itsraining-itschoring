@@ -108,10 +108,18 @@ class mainMenu extends Phaser.Scene {
     }
 
     create () {
+            this.sound.stopAll();
             //sound test
-            let playmusic = this.sound.add("music");
-            playmusic.loop = true;
-            playmusic.play();
+            this.playsound = this.sound.add("music");
+            this.playsound.loop = true;
+            if(!this.playsound.isPlaying) {
+              this.playsound.play();
+            }
+            this.playmusic = this.sound.add("music0");
+            this.playmusic.loop = true;
+            if(!this.playmusic.isPlaying) {
+                this.playmusic.play();
+            }
 
 
         var background = this.add.image(game.config.width/2, game.config.height/2, "titleBG");

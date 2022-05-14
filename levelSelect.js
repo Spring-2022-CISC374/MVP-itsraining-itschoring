@@ -81,9 +81,7 @@ class levelSelect extends Phaser.Scene {
         var text_exit = this.add.text(600, 700, 'Exit', text_style);
         text_exit.setInteractive();
 
-        let playmusic = this.sound.add("music0");
-            playmusic.loop = true;
-            playmusic.play();
+        
 
     }
 }
