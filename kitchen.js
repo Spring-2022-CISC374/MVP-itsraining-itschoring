@@ -68,7 +68,7 @@ class kitchen extends Phaser.Scene{
             // Limit the character to a certain range of the trash can to click to trigger
             var x = this.player.body.position.x;
             var y = this.player.body.position.y;
-            if ((x > 350 && x < 500) && (y < 400 && y > 250)) {
+            if ((x > 300 && x < 500) && (y < 400 && y > 225)) {
                 this.scene.start("trashGame", {
                     'posX': x + 64,
                     'posY': y + 64,
