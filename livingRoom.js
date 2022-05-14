@@ -155,11 +155,11 @@ class livingRoom extends Phaser.Scene{
         }
       })
 
-      var text_reset = this.add.text(120, 640, 'Reset', text_style);
-      text_reset.setInteractive();
-      text_reset.on('pointerdown', function (pointer) {
-        this.scene.start('livingRoom', { 'posX': 300, 'posY': 430, 'completion': [0,0,0,0] });
-      }, this);
+      // var text_reset = this.add.text(120, 640, 'Reset', text_style);
+      // text_reset.setInteractive();
+      // text_reset.on('pointerdown', function (pointer) {
+      //   this.scene.start('livingRoom', { 'posX': 300, 'posY': 430, 'completion': [0,0,0,0] });
+      // }, this);
 
 
       //var centerX = this.physics.world.bounds.centerX;

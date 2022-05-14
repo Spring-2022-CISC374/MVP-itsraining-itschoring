@@ -157,11 +157,11 @@ class bedroom2 extends Phaser.Scene{
         }
       })
       
-      var text_reset = this.add.text(120, 640, 'Reset', text_style);
-      text_reset.setInteractive();
-      text_reset.on('pointerdown', function (pointer) {
-        this.scene.start('bedroom2', { 'posX': 120, 'posY': 250, 'completion': [0,0,0,1] });
-      }, this);
+      // var text_reset = this.add.text(120, 640, 'Reset', text_style);
+      // text_reset.setInteractive();
+      // text_reset.on('pointerdown', function (pointer) {
+      //   this.scene.start('bedroom2', { 'posX': 120, 'posY': 250, 'completion': [0,0,0,1] });
+      // }, this);
 
 
       var centerX = this.physics.world.bounds.centerX;

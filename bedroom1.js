@@ -177,11 +177,11 @@ class bedroom1 extends Phaser.Scene{
           text_time.setText(`Time: ${++this.playtime}`)
         }
       })
-      var text_reset = this.add.text(120, 640, 'Reset', text_style);
-      text_reset.setInteractive();
-      text_reset.on('pointerdown', function (pointer) {
-        this.scene.start('bedroom1', { 'posX': 650, 'posY': 240, 'completion': [0,0,0,0] });
-      }, this);
+      // var text_reset = this.add.text(120, 640, 'Reset', text_style);
+      // text_reset.setInteractive();
+      // text_reset.on('pointerdown', function (pointer) {
+      //   this.scene.start('bedroom1', { 'posX': 650, 'posY': 240, 'completion': [0,0,0,0] });
+      // }, this);
       
       var text_exit = this.add.text(300, 600, 'Back to level', text_style);
       text_exit.setInteractive();
