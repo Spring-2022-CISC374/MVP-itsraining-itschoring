@@ -27,6 +27,16 @@ class Sflower extends Phaser.Scene {
     preload() { }
 
     create() {
+        const dropCount = this.map[this.level - 1]?.count;
+        this.backScene = this.map[this.level - 1]?.backScene;
+        if (this.level === 1) {
+            var background = this.add.image(game.config.width/2, game.config.height/2, "flowerBG1");
+            background.setScale(6);
+        } else if (this.level === 2) {
+            var background = this.add.image(game.config.width/2, game.config.height/2, "flowerBG2");
+            background.setScale(6);
+        }
+
         // //text
         // var text_style = {
         //     font: 'bold 32px Arial',
@@ -44,16 +54,16 @@ class Sflower extends Phaser.Scene {
         })
 
         // initial grow of flower
-        this.flower_time = 0;  // grow time
+        // this.flower_time = 0;  // grow time
         // time
-        var timeText = this.add.text(30, 30, this.flower_time);
-        this.timer = this.time.addEvent({
-            delay: 1000,
-            loop: true,
-            callback: () => {
-                timeText.setText(++this.flower_time);
-            }
-        })
+        // var timeText = this.add.text(30, 30, this.flower_time);
+        // this.timer = this.time.addEvent({
+        //     delay: 1000,
+        //     loop: true,
+        //     callback: () => {
+        //         timeText.setText(++this.flower_time);
+        //     }
+        // })
 
         // 1
         this.index = 1;
@@ -61,11 +71,11 @@ class Sflower extends Phaser.Scene {
         this.setFlower(this._flower, this.index)
 
         // instruction
-        this.flowerText = this.add.text(150, 350, "drag water drops to the flower to help it grow")
+        this.flowerText = this.add.text(450, 350, "Drag water drops to the flower");
+        this.flowerText2 = this.add.text(450, 375, "to help it grow");
         let dropTotal = [];
 
-        const dropCount = this.map[this.level - 1]?.count;
-        const backScene = this.map[this.level - 1]?.backScene;
+        
         const _this = this;
 
         // water drop
@@ -80,11 +90,12 @@ class Sflower extends Phaser.Scene {
                 if (dragX >= 300 && dragX <= 380 && dragY >= 380 && dragY <= 500) {
                     if (dropTotal.indexOf(i) == -1) {
                         if (dropTotal.length >= dropCount - 1) {
-                            return _this.scene.start(backScene, {
+                            _this.scene.start(_this.backScene, {
                                 'posX': _this.lastPosX, 'posY': _this.lastPosY,
                                 'completion': [_this.completion[0], _this.completion[1], _this.completion[2], 1],
                                 'playtime': _this.playtime
                             });
+                            return;
                         }
                         dropTotal.push(i)
                     }
@@ -123,19 +134,19 @@ class Sflower extends Phaser.Scene {
         // }, this)
 
         // Exit
-        var text_style = {
-            font: 'bold 32px Arial',
-            color: '#fff'
-        }
-        var text_title1 = this.add.text(430, 480, "Exit", text_style);
-        text_title1.setInteractive();
-        text_title1.on('pointerdown', function (pointer) {
-            this.scene.start('kitchen', {
-                'posX': this.lastPosX, 'posY': this.lastPosY,
-                'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
-                'playtime': this.playtime
-            })
-        }, this);
+        // var text_style = {
+        //     font: 'bold 32px Arial',
+        //     color: '#fff'
+        // }
+        // var text_title1 = this.add.text(430, 480, "Exit", text_style);
+        // text_title1.setInteractive();
+        // text_title1.on('pointerdown', function (pointer) {
+        //     this.scene.start('kitchen', {
+        //         'posX': this.lastPosX, 'posY': this.lastPosY,
+        //         'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
+        //         'playtime': this.playtime
+        //     })
+        // }, this);
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
@@ -146,7 +157,7 @@ class Sflower extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-            this.scene.start("kitchen", {
+            this.scene.start(this.backScene, {
                 'posX': this.lastPosX, 'posY': this.lastPosY,
                 'completion': [this.completion[0], this.completion[1], this.completion[2], 1],
                 'playtime': this.playtime

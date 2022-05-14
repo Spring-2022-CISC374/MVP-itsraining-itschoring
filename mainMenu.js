@@ -62,6 +62,8 @@ class mainMenu extends Phaser.Scene {
       this.load.image("flower4", "assets/final.png");
       this.load.image("watering", "assets/watering.png");
       this.load.image("waterdrop", "assets/waterdrop.jpg");
+      this.load.image("flowerBG1", "assets/flowerBG1.png");
+      this.load.image("flowerBG2", "assets/flowerBG2.png");
 
       this.load.image("garbage", "assets/garbage.png");
       this.load.image("trash", "assets/trash-icon.jpg");
