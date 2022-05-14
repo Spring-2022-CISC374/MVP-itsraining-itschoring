@@ -98,7 +98,9 @@ class mainMenu extends Phaser.Scene {
       this.load.image("clothes2", "assets/clothes2.png");
       this.load.image("clothes3", "assets/clothes3.png");
       this.load.image("clothes4", "assets/clothes4.png");
-      this.load.image("closet", "assets/Closet.jpg");
+      this.load.image("closet", "assets/Closet.png");
+      this.load.image("packClothesBG", "assets/packClothesBG.png");
+      this.load.image("packClothes1BG", "assets/packClothes1BG.png");
 
       this.load.audio("music", "assets/rain.mp3");
 

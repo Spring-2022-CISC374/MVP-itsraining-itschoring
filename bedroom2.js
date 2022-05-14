@@ -15,7 +15,7 @@ class bedroom2 extends Phaser.Scene{
   create(){
       console.log(this.completion[0], this.completion[1], this.completion[2], this.completion[3])
 
-      if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
+      if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1){
         console.log("done")
         this.scene.start('bedroom2Completion',{
           'playtime': this.playtime
