@@ -41,8 +41,18 @@ class TrashGame extends Phaser.Scene {
                 this.playtime++
             }
         })
-        var background = this.add.image(game.config.width / 2, game.config.height/2, "trashBG");
-        background.setScale(5);
+        if (this.level === 1) {
+            var background = this.add.image(game.config.width / 2, game.config.height/2, "trashBG");
+            background.setScale(5);
+        } else if (this.level === 2) {
+            var background = this.add.image(game.config.width/2, game.config.height/2, "flowerBG2");
+            background.setScale(6);
+        } else if (this.level === 3 || this.level === 4) {
+            var background = this.add.image(game.config.width/2, game.config.height/2, "bookSortingv2BG");
+            background.setScale(5.2);
+        }
+        
+        
 
         this.trashCount = 5;
         if (this.level != 1) {
