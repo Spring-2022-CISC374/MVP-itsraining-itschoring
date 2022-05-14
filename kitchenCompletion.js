@@ -16,11 +16,18 @@ class kitchenCompletion extends Phaser.Scene {
         var centerX = this.physics.world.bounds.centerX;
 
         var text_title1 = this.add.text(centerX - 150, 150, "Kitchen Complete", text_style);
-        var text_title2 = this.add.text(centerX - 150, 250, "Score : placeholdder", text_style);
-        var text_title3 = this.add.text(
-            centerX - 150, 350,
-            `You used a total of ${this.playtime} Seconds ,Congratulations !`,
-        )
+
+        if (this.playtime > 0 && this.playtime < 200) {
+            gameSettings.kitchenScore = 10000 - 50*this.playtime;
+        } else {
+            gameSettings.kitchenScore = 0;
+        }
+
+        var text_title2 = this.add.text(centerX - 150, 250, "Score: " + gameSettings.kitchenScore, text_style);
+        // var text_title3 = this.add.text(
+        //     centerX - 150, 350,
+        //     `You used a total of ${this.playtime} Seconds ,Congratulations !`,
+        // )
         var text_start = this.add.text(300, 600, 'Level Select', text_style);
         text_start.setInteractive();
         text_start.on('pointerdown', function (pointer) {

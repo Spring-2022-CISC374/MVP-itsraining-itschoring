@@ -1,6 +1,9 @@
 var gameSettings = {
     playerSpeed: 200,
-
+    kitchenScore: 0,
+    livingRoomScore: 0,
+    bedroom1Score: 0,
+    bedroom2Score: 0
 }
 
 var config = {

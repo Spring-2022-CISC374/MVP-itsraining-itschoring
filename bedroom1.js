@@ -17,9 +17,9 @@ class bedroom1 extends Phaser.Scene{
 
       if(this.completion[0] == 1 && this.completion[1] == 1 && this.completion[2] == 1 && this.completion[3] == 1){
         //console.log("done")
-        this.scene.start('bedroom1Completion'),{
+        this.scene.start('bedroom1Completion',{
           'playtime': this.playtime
-        }
+        });
       }
 
       var background = this.add.image(0, 0, "bedroom1BG");
